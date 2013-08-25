@@ -1,0 +1,28 @@
+#ifndef DATABASE_H
+#define DATABASE_H
+
+#include <QtSql>
+#include <QList>
+#include <boost/shared_ptr.hpp>
+#include <boost/noncopyable.hpp>
+#include <DataBaseUnit/Exceptions/db_exceptions.h>
+
+class Database : public boost::noncopyable
+{
+private:
+    boost::shared_ptr<QSqlQuery> sql_query;
+protected:
+public:
+
+
+private:
+protected:
+public:
+    Database(const QString db_path = "D:\\rista_6\\rista\\rista_6\\DataBaseUnit\\rista_data_base.db");
+    void setTable(const QString table_name = "patients");
+    inline QSqlRecord getRecord(const quint32 index);
+    QList<QSqlRecord> getAllRecords();
+
+};
+
+#endif // CDATABASE_H

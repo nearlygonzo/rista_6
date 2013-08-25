@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1000</width>
+    <height>570</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1000</width>
+    <height>570</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1000</width>
+    <height>570</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Rista v.6.00</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QFrame" name="catalogFrame">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>351</width>
+      <height>541</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Newton Phonetic ABBYY</family>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="lineWidth">
+     <number>120</number>
+    </property>
+    <widget class="QTreeView" name="patientsCatalogTreeView">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>331</width>
+       <height>201</height>
+      </rect>
+     </property>
+     <property name="animated">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QTreeView" name="generalCatalogTreeView_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>280</y>
+       <width>331</width>
+       <height>201</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="Line" name="line">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>260</y>
+       <width>331</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="mainMenuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1000</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="fileMenu">
+    <property name="title">
+     <string>Файл</string>
+    </property>
+    <widget class="QMenu" name="exportMenu">
+     <property name="title">
+      <string>Экспорт</string>
+     </property>
+     <addaction name="exportMsWordAction"/>
+     <addaction name="exportFileAction"/>
+    </widget>
+    <addaction name="importAction"/>
+    <addaction name="exportMenu"/>
+    <addaction name="separator"/>
+    <addaction name="exitAction"/>
+   </widget>
+   <widget class="QMenu" name="deviceMenu">
+    <property name="title">
+     <string>Прибор</string>
+    </property>
+    <addaction name="readDeviceAction"/>
+    <addaction name="readDataAction"/>
+    <addaction name="stopDeviceAction"/>
+    <addaction name="resetDeviceAction"/>
+   </widget>
+   <widget class="QMenu" name="settingsMenu">
+    <property name="title">
+     <string>Настройки</string>
+    </property>
+    <widget class="QMenu" name="languageMenu">
+     <property name="title">
+      <string>Язык программы</string>
+     </property>
+     <addaction name="russianLangAction"/>
+     <addaction name="englishLangAction"/>
+    </widget>
+    <addaction name="languageMenu"/>
+    <addaction name="formConclusionAction"/>
+    <addaction name="autoreadAction"/>
+   </widget>
+   <widget class="QMenu" name="catalogMenu">
+    <property name="title">
+     <string>Картотека пациентов</string>
+    </property>
+    <addaction name="choosePatientAction"/>
+    <addaction name="addPatientAction"/>
+    <addaction name="deletePatientAction"/>
+    <addaction name="importCatalogAction"/>
+    <addaction name="exportCatalogAction"/>
+    <addaction name="removeCatalogAction"/>
+   </widget>
+   <widget class="QMenu" name="helpMenu">
+    <property name="title">
+     <string>Помощь</string>
+    </property>
+    <addaction name="getHelpAction"/>
+    <addaction name="aboutProgrammAction"/>
+   </widget>
+   <addaction name="fileMenu"/>
+   <addaction name="deviceMenu"/>
+   <addaction name="settingsMenu"/>
+   <addaction name="catalogMenu"/>
+   <addaction name="helpMenu"/>
+  </widget>
+  <action name="importAction">
+   <property name="text">
+    <string>Импорт</string>
+   </property>
+  </action>
+  <action name="exportMsWordAction">
+   <property name="text">
+    <string>MS Word документ</string>
+   </property>
+  </action>
+  <action name="exportFileAction">
+   <property name="text">
+    <string>Переносимый файл</string>
+   </property>
+  </action>
+  <action name="exitAction">
+   <property name="text">
+    <string>Выход</string>
+   </property>
+  </action>
+  <action name="readDeviceAction">
+   <property name="text">
+    <string>Прочитать</string>
+   </property>
+  </action>
+  <action name="stopDeviceAction">
+   <property name="text">
+    <string>Прервать связь</string>
+   </property>
+  </action>
+  <action name="readDataAction">
+   <property name="text">
+    <string>Снять данные</string>
+   </property>
+  </action>
+  <action name="resetDeviceAction">
+   <property name="text">
+    <string>Стереть </string>
+   </property>
+  </action>
+  <action name="russianLangAction">
+   <property name="text">
+    <string>Русский</string>
+   </property>
+  </action>
+  <action name="englishLangAction">
+   <property name="text">
+    <string>Английский</string>
+   </property>
+  </action>
+  <action name="formConclusionAction">
+   <property name="text">
+    <string>Формировать расширенное заключение</string>
+   </property>
+  </action>
+  <action name="autoreadAction">
+   <property name="text">
+    <string>Автоматический съем</string>
+   </property>
+  </action>
+  <action name="choosePatientAction">
+   <property name="text">
+    <string>Выбрать пациента</string>
+   </property>
+  </action>
+  <action name="addPatientAction">
+   <property name="text">
+    <string>Добавить пациента</string>
+   </property>
+  </action>
+  <action name="deletePatientAction">
+   <property name="text">
+    <string>Удалить пациента</string>
+   </property>
+  </action>
+  <action name="importCatalogAction">
+   <property name="text">
+    <string>Импортировать картотеку</string>
+   </property>
+  </action>
+  <action name="exportCatalogAction">
+   <property name="text">
+    <string>Экспортировать картотеку</string>
+   </property>
+  </action>
+  <action name="removeCatalogAction">
+   <property name="text">
+    <string>Очистить картотеку</string>
+   </property>
+  </action>
+  <action name="getHelpAction">
+   <property name="text">
+    <string>Вызов справки</string>
+   </property>
+  </action>
+  <action name="aboutProgrammAction">
+   <property name="text">
+    <string>О программе</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
