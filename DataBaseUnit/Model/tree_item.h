@@ -6,21 +6,25 @@
 
 class TreeItem         // abstract class for specialy tree items
 {
+typedef QList<QVariant> RecordData;
 private:
     QList<TreeItem*> childItems;
-    QList<QVariant> itemData;
     TreeItem *parentItem;
+protected:
+    int id;
+    QString title;
 
 public:
-    TreeItem(const QList<QVariant> &data, TreeItem *parent = 0);
-    ~TreeItem();
+    TreeItem(const RecordData &data, TreeItem *parent = 0);
+    virtual ~TreeItem();
     void appendChild(TreeItem *child);
     TreeItem *child(int row);
     int childCount() const;
-    int columnCount() const;
-    QVariant data(int column) const;
+    virtual int columnCount() const = 0;
     int row() const;
     TreeItem *parent();
+
+    const int getId() const;
 
 };
 

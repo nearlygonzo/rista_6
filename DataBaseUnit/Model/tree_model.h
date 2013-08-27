@@ -11,12 +11,15 @@
 
 class TreeModel : public QAbstractItemModel
 {
-    Q_OBJECT
+typedef QList<QVariant> RecordData;
+
 private:
+    boost::shared_ptr<ItemCreator> creator;
     TreeItem *rootItem;
 
+
 public:
-    TreeModel(const QString &data, QObject *parent = 0);
+    TreeModel(const QList<RecordData> &data, QObject *parent = 0);
     ~TreeModel();
 
     QVariant data(const QModelIndex &index, int role) const;
@@ -30,7 +33,7 @@ public:
     int columnCount(const QModelIndex &parent = QModelIndex()) const;
 
 private:
-    void setupModelData(const QStringList &lines, TreeItem *parent);
+    void setupModelData(const QList<RecordData> &data, TreeItem *parent = 0);
 
 };
 

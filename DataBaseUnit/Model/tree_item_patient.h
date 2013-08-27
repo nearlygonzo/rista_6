@@ -5,14 +5,18 @@
 
 class TreeItemPatient : public TreeItem
 {
+typedef QList<QVariant> RecordData;
 private:
     QString surname;
     QString first_name;
     QString second_name;
 
 public:
-    TreeItemPatient(const QList<QVariant> &data, TreeItem *parent = 0);
+    TreeItemPatient(const RecordData &data, TreeItem *parent = 0);
     const QString getSurname();
+    const QString getFirstName();
+    const QString getSecondName();
+    virtual int columnCount();
 };
 
 #endif
