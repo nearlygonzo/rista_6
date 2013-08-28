@@ -18,7 +18,6 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
     DataBaseUnit/database.cpp \
-    DataBaseUnit/patient.cpp \
     mainwindow.cpp \
     core.cpp \
     DataBaseUnit/Exceptions/db_exceptions.cpp \
@@ -30,7 +29,6 @@ SOURCES += main.cpp\
 
 HEADERS  += \
     DataBaseUnit/database.h \
-    DataBaseUnit/patient.h \
     mainwindow.h \
     core.h \
     DataBaseUnit/Exceptions/db_exceptions.h \

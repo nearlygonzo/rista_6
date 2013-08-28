@@ -1,6 +1,6 @@
 #include "core.h"
 
 Core::Core() {
-    tree_model = boost::shared_ptr<TreeModel>();
+    tree_model = boost::shared_ptr<TreeModel>(new TreeModel());
 }
 

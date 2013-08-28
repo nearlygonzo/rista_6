@@ -6,10 +6,13 @@
 class TreeItemRoot : public TreeItem
 {
 typedef QList<QVariant> RecordData;
+private:
+    static const int PROPERTES_COUNT = 1;
 
 public:
     TreeItemRoot(const RecordData &data);
-    virtual int columnCount();
+    virtual int columnCount() const;
+    virtual QVariant data(const int param);
 };
 
 #endif // TREE_ITEM_ROOT_H

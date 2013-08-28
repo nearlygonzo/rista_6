@@ -35,16 +35,8 @@ int TreeItem::row() const
     return 0;
 }
 
-int TreeItem::columnCount() const
-{
-    return 2;
-}
-
 TreeItem* TreeItem::parent()
 {
     return parentItem;
 }
 
-const int TreeItem::getId() const {
-    return id;
-}

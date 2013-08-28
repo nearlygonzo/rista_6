@@ -8,18 +8,16 @@ TreeItemPatient::TreeItemPatient(const RecordData &data, TreeItem *parent)
 {
 }
 
-const QString TreeItemPatient::getSurname() {
-    return surname;
+int TreeItemPatient::columnCount() const {
+    return PROPERTES_COUNT;
 }
 
-const QString TreeItemPatient::getFirstName() {
-    return first_name;
-}
-
-const QString TreeItemPatient::getSecondName() {
-    return second_name;
-}
-
-void TreeItemPatient::viewData() {
-
+QVariant TreeItemPatient::data(const int param) {
+    switch (param) {
+    case TreeItem::ID:          return QVariant(id);
+    case TreeItem::SURNAME:     return QVariant(surname);
+    case TreeItem::FIRST_NAME:  return QVariant(first_name);
+    case TreeItem::SECOND_NAME: return QVariant(second_name);
+    default:    return QVariant();
+    }
 }

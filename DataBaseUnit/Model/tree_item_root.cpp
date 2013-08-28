@@ -5,6 +5,10 @@ TreeItemRoot::TreeItemRoot(const RecordData &data)
 {
 }
 
-void TreeItemRoot::viewData() {
+int TreeItemRoot::columnCount() const {
+    return PROPERTES_COUNT;
+}
 
+QVariant TreeItemRoot::data(const int param) {
+    return QVariant(param);
 }
