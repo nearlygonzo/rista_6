@@ -1,6 +1,11 @@
 #include "core.h"
 
 Core::Core() {
-    tree_model = boost::shared_ptr<TreeModel>(new TreeModel());
+    _dataControl = boost::shared_ptr<DataControl>(new DataControl());
+}
+
+void Core::fillTreeView(QTreeView* treeView) {
+    TreeModel *tm = _dataControl->getTreeModel();
+    treeView->setModel(tm);
 }
 

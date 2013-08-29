@@ -19,15 +19,8 @@ QSqlRecord Database::getRecord(const quint32 index) {
     return sql_query->record();
 }
 
-QList<QSqlRecord> Database::getAllRecords() {
-    QList<QSqlRecord> records_list;
-    sql_query->first();
-    while (sql_query->isValid()) {
-        QSqlRecord record = sql_query->record();
-        records_list.append(record);
-        sql_query->next();
-    }
-    return records_list;
+int Database::getRecordsCount() const {
+    sql_query->size();
 }
 
 

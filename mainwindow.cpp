@@ -6,7 +6,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    Core::get_mutable_instance();
+    Core::get_mutable_instance().fillTreeView(ui->patientsCatalogTreeView);
+
 }
 
 MainWindow::~MainWindow()

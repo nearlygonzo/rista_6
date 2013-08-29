@@ -14,8 +14,8 @@ private:
 
 public:
     TreeItemPatient(const RecordData &data, TreeItem *parent = 0);
-    virtual int columnCount() const;
-    virtual QVariant data(const int param);
+    int columnCount() const;
+    QVariant data(const int param);
 };
 
 #endif

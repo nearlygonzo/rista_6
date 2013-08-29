@@ -23,7 +23,7 @@ int TreeModel::columnCount(const QModelIndex &parent) const
         return rootItem->columnCount();
 }
 
-QVariant TreeModel::data(const QModelIndex &index, int param, int role) const
+QVariant TreeModel::data(const QModelIndex &index, int role) const
 {
     if (!index.isValid())
         return QVariant();
@@ -33,7 +33,7 @@ QVariant TreeModel::data(const QModelIndex &index, int param, int role) const
 
     TreeItem *item = static_cast<TreeItem*>(index.internalPointer());
 
-    return item->data(param);
+    return item->data(index.column());
 }
 
 Qt::ItemFlags TreeModel::flags(const QModelIndex &index) const

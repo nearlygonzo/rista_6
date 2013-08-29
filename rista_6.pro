@@ -25,7 +25,8 @@ SOURCES += main.cpp\
     DataBaseUnit/Model/tree_item.cpp \
     DataBaseUnit/Model/tree_item_patient.cpp \
     DataBaseUnit/Model/Factory/item_creator.cpp \
-    DataBaseUnit/Model/tree_item_root.cpp
+    DataBaseUnit/Model/tree_item_root.cpp \
+    DataBaseUnit/data_control.cpp
 
 HEADERS  += \
     DataBaseUnit/database.h \
@@ -36,7 +37,8 @@ HEADERS  += \
     DataBaseUnit/Model/tree_item.h \
     DataBaseUnit/Model/tree_item_patient.h \
     DataBaseUnit/Model/Factory/item_creator.h \
-    DataBaseUnit/Model/tree_item_root.h
+    DataBaseUnit/Model/tree_item_root.h \
+    DataBaseUnit/data_control.h
 
 FORMS    += mainwindow.ui
 

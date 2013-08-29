@@ -20,8 +20,8 @@ protected:
 public:
     Database(const QString db_path = "D:\\rista_6\\rista\\rista_6\\DataBaseUnit\\rista_data_base.db");
     void setTable(const QString table_name = "patients");
-    inline QSqlRecord getRecord(const quint32 index);
-    QList<QSqlRecord> getAllRecords();
+    QSqlRecord getRecord(const quint32 index);
+    int getRecordsCount() const;
 
 };
 

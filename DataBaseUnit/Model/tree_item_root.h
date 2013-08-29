@@ -11,8 +11,8 @@ private:
 
 public:
     TreeItemRoot(const RecordData &data);
-    virtual int columnCount() const;
-    virtual QVariant data(const int param);
+    int columnCount() const;
+    QVariant data(const int param);
 };
 
 #endif // TREE_ITEM_ROOT_H
