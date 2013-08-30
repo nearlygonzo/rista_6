@@ -5,7 +5,6 @@
 
 class TreeItemPatient : public TreeItem
 {
-typedef QList<QVariant> RecordData;
 private:
     static const int PROPERTES_COUNT = 4;
     QString surname;
@@ -16,6 +15,7 @@ public:
     TreeItemPatient(const RecordData &data, TreeItem *parent = 0);
     int columnCount() const;
     QVariant data(const int param);
+    inline QString formTitle();
 };
 
 #endif

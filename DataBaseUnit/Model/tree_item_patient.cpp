@@ -2,10 +2,11 @@
 
 TreeItemPatient::TreeItemPatient(const RecordData &data, TreeItem *parent)
     : TreeItem(data, parent),
-      surname(data.value(1).toString()),
-      first_name(data.value(2).toString()),
-      second_name(data.value(3).toString())
+      surname(data["surename"].toString()),
+      first_name(data["first_name"].toString()),
+      second_name(data["second_name"].toString())
 {
+    title = formTitle();
 }
 
 int TreeItemPatient::columnCount() const {
@@ -20,4 +21,8 @@ QVariant TreeItemPatient::data(const int param) {
     case TreeItem::SECOND_NAME: return QVariant(second_name);
     default:    return QVariant();
     }
+}
+
+QString TreeItemPatient::formTitle() {
+    return QString(surname + " " + first_name);
 }

@@ -6,10 +6,12 @@
 
 class ItemCreator      // factory for create specialy items
 {
-typedef QList<QVariant> RecordData;
+private:
 
 public:
-    TreeItem* factoryMethod(QList<QVariant> &data, TreeItem *parent = 0);
+    static const int TYPE_ITEM_ROOT     = 0;
+    static const int TYPE_ITEM_PATIENT  = 1;
+    TreeItem* factoryMethod(RecordData &data, TreeItem *parent = 0);
     ItemCreator();
 };
 

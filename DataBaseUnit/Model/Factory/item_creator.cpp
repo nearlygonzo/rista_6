@@ -4,11 +4,12 @@ ItemCreator::ItemCreator()
 {
 }
 
-TreeItem* ItemCreator::factoryMethod(QList<QVariant> &data, TreeItem *parent) {
-    int type = data.value(1).toInt();
+TreeItem* ItemCreator::factoryMethod(RecordData &data, TreeItem *parent) {
+    int type = data["type"].toInt();
     switch (type) {
-    case 0: return new TreeItemRoot(data);
-    case 1: return new TreeItemPatient(data, parent);
+    case TYPE_ITEM_ROOT:    return new TreeItemRoot(data);
+    case TYPE_ITEM_PATIENT: return new TreeItemPatient(data, parent);
+
     default: return new TreeItemRoot(data);
     }
 }

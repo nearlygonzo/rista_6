@@ -1,13 +1,13 @@
 #include "tree_model.h"
 
-TreeModel::TreeModel(const QList<RecordData> &data, QObject *parent)
+TreeModel::TreeModel(QObject *parent)
      : QAbstractItemModel(parent)
 {
     RecordData rootData;
-    rootData << 0 << "root";
+    rootData["id"] = 0;
+    rootData["type"] = ItemCreator::TYPE_ITEM_ROOT;
     creator = boost::shared_ptr<ItemCreator>(new ItemCreator);
     rootItem = creator->factoryMethod(rootData);
-    setupModelData(data, rootItem);
 }
 
 TreeModel::~TreeModel()
@@ -92,8 +92,9 @@ int TreeModel::rowCount(const QModelIndex &parent) const
     return parentItem->childCount();
 }
 
-void TreeModel::setupModelData(const QList<RecordData> &data, TreeItem *parent)
+void TreeModel::fillModel(const QList<RecordData> &data)
 {
+    TreeItem *parent = rootItem;
     int count = data.size();
     for (int i = 0; i < count; ++i) {
         RecordData recordData = data.value(i);

@@ -5,7 +5,6 @@
 
 class TreeItemRoot : public TreeItem
 {
-typedef QList<QVariant> RecordData;
 private:
     static const int PROPERTES_COUNT = 1;
 

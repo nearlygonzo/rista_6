@@ -1,10 +1,9 @@
 #include "tree_item.h"
 
 TreeItem::TreeItem(const RecordData &data, TreeItem *parent)
-    : id(data.value(0).toInt())
+    : id(data["id"].toInt())
 {
     parentItem = parent;
-    title = data.value(0).toString();
 }
 
 TreeItem::~TreeItem()

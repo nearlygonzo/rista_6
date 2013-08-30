@@ -8,18 +8,18 @@
 #include <DataBaseUnit/Model/tree_item_patient.h>
 #include <DataBaseUnit/Model/Factory/item_creator.h>
 
+
+
 class TreeModel : public QAbstractItemModel
 {
-typedef QList<QVariant> RecordData;
 
 private:
     boost::shared_ptr<ItemCreator> creator;
     TreeItem *rootItem;
-    void setupModelData(const QList<RecordData> &data, TreeItem *parent = 0);
 
 
 public:
-    TreeModel(const QList<RecordData> &data, QObject *parent = 0);
+    TreeModel(QObject *parent = 0);
     ~TreeModel();
 
     QVariant data(const QModelIndex &index, int role) const;
@@ -29,6 +29,7 @@ public:
     QModelIndex parent(const QModelIndex &index) const;
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     int columnCount(const QModelIndex &parent = QModelIndex()) const;
+    void fillModel(const QList<RecordData> &data);
 
 };
 

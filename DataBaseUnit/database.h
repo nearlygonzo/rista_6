@@ -7,10 +7,12 @@
 #include <boost/noncopyable.hpp>
 #include <DataBaseUnit/Exceptions/db_exceptions.h>
 
+#define DB_PATH "f:\\Rista_6\\rista_6\\rista_6-master\\DataBaseUnit\\rista_data_base.db"
+
 class Database : public boost::noncopyable
 {
 private:
-    boost::shared_ptr<QSqlQuery> sql_query;
+    boost::shared_ptr<QSqlQueryModel> sql_query;
 protected:
 public:
 
@@ -18,7 +20,7 @@ public:
 private:
 protected:
 public:
-    Database(const QString db_path = "D:\\rista_6\\rista\\rista_6\\DataBaseUnit\\rista_data_base.db");
+    Database(const QString db_path = DB_PATH);
     void setTable(const QString table_name = "patients");
     QSqlRecord getRecord(const quint32 index);
     int getRecordsCount() const;

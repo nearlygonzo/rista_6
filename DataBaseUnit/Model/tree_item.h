@@ -4,9 +4,10 @@
 #include <QString>
 #include <QVariant>
 
+typedef QMap<QString, QVariant> RecordData;
+
 class TreeItem         // abstract class for specialy tree items
 {
-typedef QList<QVariant> RecordData;
 public:
     const static int ID          = 0;
     const static int SURNAME     = 1;

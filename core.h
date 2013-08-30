@@ -8,7 +8,7 @@
 class Core : public boost::serialization::singleton<Core>
 {
 private:
-    boost::shared_ptr<DataControl> _dataControl;
+    const boost::shared_ptr<DataControl> _dataControl;
 protected:
 public:
 

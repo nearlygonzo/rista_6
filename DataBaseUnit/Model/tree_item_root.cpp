@@ -3,6 +3,7 @@
 TreeItemRoot::TreeItemRoot(const RecordData &data)
     :TreeItem(data, 0)
 {
+    title = QString();
 }
 
 int TreeItemRoot::columnCount() const {
