@@ -9,10 +9,11 @@ typedef QMap<QString, QVariant> RecordData;
 class TreeItem         // abstract class for specialy tree items
 {
 public:
-    const static int ID          = 0;
-    const static int SURNAME     = 1;
-    const static int FIRST_NAME  = 2;
-    const static int SECOND_NAME = 3;
+    const static int TITLE       = 0;
+    const static int ID          = 1;
+    const static int SURNAME     = 2;
+    const static int FIRST_NAME  = 3;
+    const static int SECOND_NAME = 4;
 
 private:
     QList<TreeItem*> childItems;

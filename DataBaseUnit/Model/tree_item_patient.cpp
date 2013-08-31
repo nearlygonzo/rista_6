@@ -15,6 +15,7 @@ int TreeItemPatient::columnCount() const {
 
 QVariant TreeItemPatient::data(const int param) {
     switch (param) {
+    case TreeItem::TITLE:       return QVariant(title);
     case TreeItem::ID:          return QVariant(id);
     case TreeItem::SURNAME:     return QVariant(surname);
     case TreeItem::FIRST_NAME:  return QVariant(first_name);

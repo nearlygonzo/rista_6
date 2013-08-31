@@ -11,5 +11,5 @@ int TreeItemRoot::columnCount() const {
 }
 
 QVariant TreeItemRoot::data(const int param) {
-    return QVariant(param);
+    return QVariant(0);
 }

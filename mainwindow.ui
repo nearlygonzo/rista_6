@@ -73,6 +73,9 @@
      <property name="animated">
       <bool>true</bool>
      </property>
+     <attribute name="headerVisible">
+      <bool>false</bool>
+     </attribute>
     </widget>
     <widget class="QTreeView" name="generalCatalogTreeView_2">
      <property name="geometry">

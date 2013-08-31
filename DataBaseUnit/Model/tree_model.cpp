@@ -94,14 +94,31 @@ int TreeModel::rowCount(const QModelIndex &parent) const
 
 void TreeModel::fillModel(const QList<RecordData> &data)
 {
-    TreeItem *parent = rootItem;
     int count = data.size();
     for (int i = 0; i < count; ++i) {
         RecordData recordData = data.value(i);
+        TreeItem *parent = findItem(recordData["parent_item"].toInt(), rootItem);
         TreeItem *item = creator->factoryMethod(recordData, parent);
         TreeItem *parentItem = item->parent();
         parentItem->appendChild(item);
     }
+}
+
+TreeItem* TreeModel::findItem(const int id, TreeItem* parent) {
+    TreeItem* item = parent;
+    if (item->data(TreeItem::ID).toInt() == id)
+        return item;
+    for (int i = 0; i < parent->childCount(); ++i) {
+        item = parent->child(i);
+        if (item->childCount() != 0) {
+            TreeItem* childItem = findItem(id, item);
+            if (item != childItem)
+                return childItem;
+        }
+        else if (item->data(TreeItem::ID).toInt() == id)
+            return item;
+    }
+    return item;
 }
 
 

@@ -30,6 +30,7 @@ public:
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     int columnCount(const QModelIndex &parent = QModelIndex()) const;
     void fillModel(const QList<RecordData> &data);
+    TreeItem* findItem(const int id, TreeItem *parent);
 
 };
 
