@@ -16,6 +16,8 @@ public:
     int columnCount() const;
     QVariant data(const int param);
     inline QString formTitle();
+    ElementInfo getInfo();
+    void setInfo(const ElementInfo &info);
 };
 
 #endif

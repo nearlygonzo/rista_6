@@ -15,7 +15,16 @@ QWidget *DelegateFramePatient::createEditor(QWidget *parent,
 void DelegateFramePatient::setEditorData(QWidget *editor,
                                          const QModelIndex &index) const
 {
-    PatientInfo data = index.model()->getElementInfo(index);
-    LineEdit *fileDialog = static_cast<LineEdit*> (editor); //преобразуем указатель
-    fileDialog->setText(value); //устанавливаем текст
+    ElementInfo data = index.model()->getElementInfo(index);
+    FramePatient *frame = static_cast<FramePatient*> (editor);
+    frame->setData(data); //устанавливаем текст
+}
+
+void DelegateFramePatient::setModelData(QWidget *editor,
+                  QAbstractItemModel *model, const QModelIndex &index) const
+{
+    FramePatient *frame = static_cast<FramePatient*>(editor);
+    ElementInfo &data = frame->getData();
+    if (!data.isEmpty())
+        model->setData(index, data);
 }

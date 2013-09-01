@@ -13,6 +13,7 @@ public:
     int columnCount() const;
     QVariant data(const int param);
     ElementInfo getInfo();
+    void setInfo(const ElementInfo &info);
 };
 
 #endif // TREE_ITEM_ROOT_H

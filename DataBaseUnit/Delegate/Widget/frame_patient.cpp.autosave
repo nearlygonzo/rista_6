@@ -3,8 +3,7 @@
 
 FramePatient::FramePatient(QModelIndex &index, QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::FramePatient),
-    indexSource(index)
+    ui(new Ui::FramePatient)
 {
     ui->setupUi(this);
 }

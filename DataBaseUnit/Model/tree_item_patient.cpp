@@ -40,6 +40,12 @@ ElementInfo TreeItemPatient::getInfo()
     return info;
 }
 
+void TreeItemPatient::setInfo(const ElementInfo &info)
+{
+    surname = info["surname"].toString();
+    first_name = info["first_name"].toString();
+    second_name = info["second_name"].toString();
+}
 
 
 

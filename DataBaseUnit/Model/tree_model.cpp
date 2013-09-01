@@ -97,7 +97,7 @@ void TreeModel::fillModel(const QList<RecordData> &data)
     int count = data.size();
     for (int i = 0; i < count; ++i) {
         RecordData recordData = data.value(i);
-        TreeItem *parent = findItem(recordData["parent_item"].toInt());
+        TreeItem *parent = findItem(recordData["parent_item"].toInt(), rootItem);
         TreeItem *item = creator->factoryMethod(recordData, parent);
         TreeItem *parentItem = item->parent();
         parentItem->appendChild(item);
@@ -126,7 +126,12 @@ ElementInfo TreeModel::getElementInfo(QModelIndex &index)
 {
     TreeItem *item = static_cast<TreeItem*>(index.internalPointer());
     ElementInfo info = item->getInfo();
+    return info;
 }
 
-
+void TreeModel::setElementInfo(QModelIndex &index, const ElementInfo &info)
+{
+    TreeItem *item = static_cast<TreeItem*>(index.internalPointer());
+    item->setInfo(info);
+}
 

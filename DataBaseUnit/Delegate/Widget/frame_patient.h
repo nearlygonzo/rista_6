@@ -6,7 +6,7 @@
 namespace Ui {
 class FramePatient;
 }
-typedef QMap<QString, QVariant> PatientInfo;
+typedef QMap<QString, QVariant> ElementInfo;
 
 class FramePatient : public QWidget
 {
@@ -15,7 +15,8 @@ class FramePatient : public QWidget
 public:
     explicit FramePatient(QModelIndex &index, QWidget *parent = 0);
     ~FramePatient();
-    void setData(QMap<QString, QVariant> data);
+    void setData(ElementInfo data);
+    ElementInfo &getData();
     
 private:
     Ui::FramePatient *ui;

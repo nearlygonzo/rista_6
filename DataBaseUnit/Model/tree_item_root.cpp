@@ -21,3 +21,7 @@ ElementInfo TreeItemRoot::getInfo()
     ElementInfo info;
     return info;
 }
+
+void TreeItemRoot::setInfo(const ElementInfo &info)
+{
+}

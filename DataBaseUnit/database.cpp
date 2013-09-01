@@ -11,16 +11,16 @@ void Database::setTable(const QString table_name) {
     QSqlDatabase sdb = QSqlDatabase::database();
     if (!sdb.isOpen())
         sdb.open();
-    sql_query = boost::shared_ptr<QSqlQueryModel>(new QSqlQueryModel());
-    sql_query->setQuery("SELECT * FROM " + table_name);
+    query = boost::shared_ptr<QSqlQueryModel>(new QSqlQueryModel());
+    query->setQuery("SELECT * FROM " + table_name);
 }
 
 QSqlRecord Database::getRecord(const quint32 index) {
-    return sql_query->record(index);
+    return query->record(index);
 }
 
 int Database::getRecordsCount() const {
-    return sql_query->rowCount();
+    return query->rowCount();
 }
 
 

@@ -34,6 +34,7 @@ public:
     virtual int columnCount() const = 0;
     virtual QVariant data(const int param) = 0;
     virtual ElementInfo getInfo() = 0;
+    virtual void setInfo(const ElementInfo &info) = 0;
 };
 
 #endif // TREE_ITEM_H
