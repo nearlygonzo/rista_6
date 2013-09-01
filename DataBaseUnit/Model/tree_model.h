@@ -16,7 +16,7 @@ class TreeModel : public QAbstractItemModel
 private:
     boost::shared_ptr<ItemCreator> creator;
     TreeItem *rootItem;
-
+    TreeItem* findItem(const int id, TreeItem *parent = rootItem);
 
 public:
     TreeModel(QObject *parent = 0);
@@ -30,7 +30,6 @@ public:
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     int columnCount(const QModelIndex &parent = QModelIndex()) const;
     void fillModel(const QList<RecordData> &data);
-    TreeItem* findItem(const int id, TreeItem *parent);
 
 };
 

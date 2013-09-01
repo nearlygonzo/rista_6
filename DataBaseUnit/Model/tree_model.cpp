@@ -97,14 +97,15 @@ void TreeModel::fillModel(const QList<RecordData> &data)
     int count = data.size();
     for (int i = 0; i < count; ++i) {
         RecordData recordData = data.value(i);
-        TreeItem *parent = findItem(recordData["parent_item"].toInt(), rootItem);
+        TreeItem *parent = findItem(recordData["parent_item"].toInt());
         TreeItem *item = creator->factoryMethod(recordData, parent);
         TreeItem *parentItem = item->parent();
         parentItem->appendChild(item);
     }
 }
 
-TreeItem* TreeModel::findItem(const int id, TreeItem* parent) {
+TreeItem* TreeModel::findItem(const int id, TreeItem* parent)
+{
     TreeItem* item = parent;
     if (item->data(TreeItem::ID).toInt() == id)
         return item;
