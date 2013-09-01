@@ -122,6 +122,11 @@ TreeItem* TreeModel::findItem(const int id, TreeItem* parent)
     return item;
 }
 
+ElementInfo TreeModel::getElementInfo(QModelIndex &index)
+{
+    TreeItem *item = static_cast<TreeItem*>(index.internalPointer());
+    ElementInfo info = item->getInfo();
+}
 
 
 

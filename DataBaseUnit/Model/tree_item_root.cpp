@@ -6,10 +6,18 @@ TreeItemRoot::TreeItemRoot(const RecordData &data)
     title = QString();
 }
 
-int TreeItemRoot::columnCount() const {
+int TreeItemRoot::columnCount() const
+{
     return PROPERTES_COUNT;
 }
 
-QVariant TreeItemRoot::data(const int param) {
+QVariant TreeItemRoot::data(const int param)
+{
     return QVariant(0);
+}
+
+ElementInfo TreeItemRoot::getInfo()
+{
+    ElementInfo info;
+    return info;
 }

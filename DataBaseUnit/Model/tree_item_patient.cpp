@@ -9,11 +9,13 @@ TreeItemPatient::TreeItemPatient(const RecordData &data, TreeItem *parent)
     title = formTitle();
 }
 
-int TreeItemPatient::columnCount() const {
+int TreeItemPatient::columnCount() const
+{
     return PROPERTES_COUNT;
 }
 
-QVariant TreeItemPatient::data(const int param) {
+QVariant TreeItemPatient::data(const int param)
+{
     switch (param) {
     case TreeItem::TITLE:       return QVariant(title);
     case TreeItem::ID:          return QVariant(id);
@@ -24,6 +26,20 @@ QVariant TreeItemPatient::data(const int param) {
     }
 }
 
-QString TreeItemPatient::formTitle() {
+QString TreeItemPatient::formTitle()
+{
     return QString(surname + " " + first_name);
 }
+
+ElementInfo TreeItemPatient::getInfo()
+{
+    ElementInfo info;
+    info["surname"] = surname;
+    info["first_name"] = first_name;
+    info["second_name"] = second_name;
+    return info;
+}
+
+
+
+

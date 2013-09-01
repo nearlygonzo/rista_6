@@ -12,6 +12,7 @@ public:
     TreeItemRoot(const RecordData &data);
     int columnCount() const;
     QVariant data(const int param);
+    ElementInfo getInfo();
 };
 
 #endif // TREE_ITEM_ROOT_H

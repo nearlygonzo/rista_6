@@ -9,10 +9,9 @@
 #include <DataBaseUnit/Model/Factory/item_creator.h>
 
 
-
 class TreeModel : public QAbstractItemModel
 {
-
+    Q_OBJECT
 private:
     boost::shared_ptr<ItemCreator> creator;
     TreeItem *rootItem;
@@ -30,6 +29,7 @@ public:
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     int columnCount(const QModelIndex &parent = QModelIndex()) const;
     void fillModel(const QList<RecordData> &data);
+    ElementInfo getElementInfo(QModelIndex &index);
 
 };
 

@@ -28,7 +28,9 @@ SOURCES += main.cpp\
     DataBaseUnit/Model/Factory/item_creator.cpp \
     DataBaseUnit/Model/tree_item_root.cpp \
     DataBaseUnit/data_control.cpp \
-    tests/TestsDataBase/test_data_control.cpp
+    tests/TestsDataBase/test_data_control.cpp \
+    DataBaseUnit/Delegate/Widget/frame_patient.cpp \
+    DataBaseUnit/Delegate/delegate_frame_patient.cpp
 
 HEADERS  += \
     DataBaseUnit/database.h \
@@ -41,8 +43,11 @@ HEADERS  += \
     DataBaseUnit/Model/Factory/item_creator.h \
     DataBaseUnit/Model/tree_item_root.h \
     DataBaseUnit/data_control.h \
-    tests/TestsDataBase/test_data_control.h
+    tests/TestsDataBase/test_data_control.h \
+    DataBaseUnit/Delegate/Widget/frame_patient.h \
+    DataBaseUnit/Delegate/delegate_frame_patient.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    DataBaseUnit/Delegate/Widget/frame_patient.ui
 
 OTHER_FILES +=

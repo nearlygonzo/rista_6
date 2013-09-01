@@ -5,6 +5,7 @@
 #include <QVariant>
 
 typedef QMap<QString, QVariant> RecordData;
+typedef QMap<QString, QVariant> ElementInfo;
 
 class TreeItem         // abstract class for specialy tree items
 {
@@ -32,7 +33,7 @@ public:
     TreeItem *parent();
     virtual int columnCount() const = 0;
     virtual QVariant data(const int param) = 0;
-
+    virtual ElementInfo getInfo() = 0;
 };
 
 #endif // TREE_ITEM_H
