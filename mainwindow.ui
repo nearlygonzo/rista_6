@@ -37,7 +37,7 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>351</width>
+      <width>311</width>
       <height>541</height>
      </rect>
     </property>
@@ -66,9 +66,15 @@
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>331</width>
+       <width>291</width>
        <height>201</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI Semibold</family>
+       <pointsize>10</pointsize>
+      </font>
      </property>
      <property name="animated">
       <bool>true</bool>
@@ -82,7 +88,7 @@
       <rect>
        <x>10</x>
        <y>280</y>
-       <width>331</width>
+       <width>291</width>
        <height>201</height>
       </rect>
      </property>
@@ -92,7 +98,7 @@
       <rect>
        <x>10</x>
        <y>260</y>
-       <width>331</width>
+       <width>291</width>
        <height>16</height>
       </rect>
      </property>
@@ -100,6 +106,22 @@
       <enum>Qt::Horizontal</enum>
      </property>
     </widget>
+   </widget>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>10</y>
+      <width>671</width>
+      <height>531</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="mainMenuBar">

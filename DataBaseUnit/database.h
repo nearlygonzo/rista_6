@@ -12,7 +12,7 @@
 class Database : public boost::noncopyable
 {
 private:
-    boost::shared_ptr<QSqlQueryModel> sql_query;
+    boost::shared_ptr<QSqlQueryModel> query;
 protected:
 public:
 

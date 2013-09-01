@@ -1,7 +1,7 @@
 #include "tree_item_root.h"
 
 TreeItemRoot::TreeItemRoot(const RecordData &data)
-    :TreeItem(data, 0)
+    : TreeItem(data, 0)
 {
     title = QString();
 }

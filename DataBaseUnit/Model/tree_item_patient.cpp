@@ -2,7 +2,7 @@
 
 TreeItemPatient::TreeItemPatient(const RecordData &data, TreeItem *parent)
     : TreeItem(data, parent),
-      surname(data["surename"].toString()),
+      surname(data["surname"].toString()),
       first_name(data["first_name"].toString()),
       second_name(data["second_name"].toString())
 {
