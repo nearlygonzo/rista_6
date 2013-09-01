@@ -1,7 +1,6 @@
 #ifndef CORE_H
 #define CORE_H
 
-#include <QTreeView>
 #include <boost/serialization/singleton.hpp>
 #include <DataBaseUnit/data_control.h>
 

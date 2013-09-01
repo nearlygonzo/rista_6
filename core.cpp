@@ -6,7 +6,7 @@ Core::Core()
 }
 
 void Core::fillTreeView(QTreeView* treeView) {
-    treeView->setModel(_dataControl->getTreeModelPatients());
-    //treeView->setHeaderHidden(true);
+    _dataControl->setView(treeView);
+    treeView->setHeaderHidden(true);
 }
 

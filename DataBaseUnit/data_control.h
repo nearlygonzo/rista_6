@@ -1,6 +1,7 @@
 #ifndef DATA_CONTROL_H
 #define DATA_CONTROL_H
 
+#include <QTreeView>
 #include <DataBaseUnit/Model/tree_model.h>
 #include <DataBaseUnit/database.h>
 
@@ -15,7 +16,7 @@ private:
 
 public:
     DataControl();
-    TreeModel* getTreeModelPatients();
+    void setView(QTreeView *view);
 };
 
 #endif // DATA_CONTROL_H

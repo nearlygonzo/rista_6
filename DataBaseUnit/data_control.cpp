@@ -32,6 +32,7 @@ RecordData DataControl::convertToRecordData(const QSqlRecord& record) {
     return recordData;
 }
 
-TreeModel* DataControl::getTreeModelPatients() {
-    return _treeModelPatients.get();
+void DataControl::setView(QTreeView *view)
+{
+    view->setModel(_treeModelPatients.get());
 }
