@@ -10,11 +10,11 @@ QT       += testlib
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-#INCLUDEPATH += d:/boost/include/boost-1_54/
-#LIBS += -Ld:/boost/lib -llibboost_system-mgw48-mt-1_54 -llibboost_thread-mgw48-mt-d-1_54
+INCLUDEPATH += d:/boost/include/boost-1_54/
+LIBS += -Ld:/boost/lib -llibboost_system-mgw48-mt-1_54 -llibboost_thread-mgw48-mt-d-1_54
 
-INCLUDEPATH += f:/boost/boost_1_54_0/
-LIBS += -Lf:/boost/boost_1_54_0/stage/lib -llibboost_system-mgw48-mt-1_54 -llibboost_thread-mgw48-mt-d-1_54
+#INCLUDEPATH += f:/boost/boost_1_54_0/
+#LIBS += -Lf:/boost/boost_1_54_0/stage/lib -llibboost_system-mgw48-mt-1_54 -llibboost_thread-mgw48-mt-d-1_54
 
 TARGET = rista_6
 TEMPLATE = app
@@ -54,4 +54,3 @@ HEADERS  += \
 FORMS    += mainwindow.ui \
     DataBaseUnit/Delegate/Widget/WidgetPatient.ui
 
-OTHER_FILES +=

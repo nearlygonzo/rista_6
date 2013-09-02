@@ -23,7 +23,7 @@ public:
 
     QVariant data(const QModelIndex &index, int role) const;
     TMU::ItemData itemData(const QModelIndex &index) const;
-    //Qt::ItemFlags flags(const QModelIndex &index) const;
+    Qt::ItemFlags flags(const QModelIndex &index) const;
     QModelIndex index(int row, int column,
                    const QModelIndex &parent = QModelIndex()) const;
     QModelIndex parent(const QModelIndex &index) const;

@@ -43,13 +43,13 @@ TMU::ItemData TreeModel::itemData(const QModelIndex &index) const
     return data;
 }
 
-/*Qt::ItemFlags TreeModel::flags(const QModelIndex &index) const
+Qt::ItemFlags TreeModel::flags(const QModelIndex &index) const
 {
     if (!index.isValid())
-        return 0;
+        return Qt::ItemIsEnabled;
 
-    return Qt::ItemIsEnabled | Qt::ItemIsSelectable;
-}*/
+    return QAbstractItemModel::flags(index) | Qt::ItemIsEditable;
+}
 
 QModelIndex TreeModel::index(int row, int column, const QModelIndex &parent)
          const

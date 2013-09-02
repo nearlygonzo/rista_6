@@ -36,3 +36,9 @@ void DelegateFramePatient::updateEditorGeometry(QWidget *editor,
 {
 
 }
+
+void DelegateFramePatient::paint(QPainter *painter,
+           const QStyleOptionViewItem &option, const QModelIndex &index) const
+{
+    int a = 0;
+}
