@@ -1,23 +1,24 @@
 #ifndef DELEGATE_FRAME_PATIENT_H
 #define DELEGATE_FRAME_PATIENT_H
 
-#include <QItemDelegate>
-#include <DataBaseUnit/Delegate/Widget/frame_patient.h>
+#include <QStyledItemDelegate>
+#include <DataBaseUnit/Delegate/Widget/WidgetPatient.h>
 
-class DelegateFramePatient : public QItemDelegate
+class DelegateFramePatient : public QStyledItemDelegate
 {
     Q_OBJECT
 
 private:
-    QModelIndex indexSource;
 
 public:
     DelegateFramePatient(QObject *parent = 0);
     QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option,
-                          const QModelIndex &index) const;
+                          QModelIndex &index) const;
     void setEditorData(QWidget *editor, const QModelIndex &index) const;
     void setModelData(QWidget *editor, QAbstractItemModel *model,
                       const QModelIndex &index) const;
+    void updateEditorGeometry(QWidget *editor, const QStyleOptionViewItem &option,
+                              const QModelIndex &index) const;
 };
 
 #endif // DELEGATE_FRAME_PATIENT_H

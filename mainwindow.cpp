@@ -7,7 +7,12 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     Core::get_mutable_instance().fillTreeView(ui->patientsCatalogTreeView);
-
+    ui->patientsCatalogTreeView->setSelectionMode(QAbstractItemView::ExtendedSelection);
+    ui->patientsCatalogTreeView->setDragEnabled(true);
+    ui->patientsCatalogTreeView->setAcceptDrops(true);
+    ui->patientsCatalogTreeView->setDropIndicatorShown(true);
+    DelegateFramePatient *del = new DelegateFramePatient(this);
+    ui->patientsCatalogTreeView->setItemDelegate(del);
 }
 
 MainWindow::~MainWindow()

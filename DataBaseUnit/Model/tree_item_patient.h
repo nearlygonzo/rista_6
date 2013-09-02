@@ -12,12 +12,12 @@ private:
     QString second_name;
 
 public:
-    TreeItemPatient(const RecordData &data, TreeItem *parent = 0);
+    TreeItemPatient(const TMU::RecordData &data, TreeItem *parent = 0);
     int columnCount() const;
     QVariant data(const int param);
     inline QString formTitle();
-    ElementInfo getInfo();
-    void setInfo(const ElementInfo &info);
+    TMU::ItemData getInfo();
+    bool setInfo(const TMU::ItemData &info);
 };
 
 #endif

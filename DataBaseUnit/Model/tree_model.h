@@ -22,15 +22,15 @@ public:
     ~TreeModel();
 
     QVariant data(const QModelIndex &index, int role) const;
-    Qt::ItemFlags flags(const QModelIndex &index) const;
+    TMU::ItemData itemData(const QModelIndex &index) const;
+    //Qt::ItemFlags flags(const QModelIndex &index) const;
     QModelIndex index(int row, int column,
                    const QModelIndex &parent = QModelIndex()) const;
     QModelIndex parent(const QModelIndex &index) const;
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     int columnCount(const QModelIndex &parent = QModelIndex()) const;
-    void fillModel(const QList<RecordData> &data);
-    ElementInfo getElementInfo(QModelIndex &index);
-    void setElementInfo(QModelIndex &index, const ElementInfo &info);
+    bool setItemData(const QModelIndex &index, const QMap<int, QVariant> &roles);
+    void fillModel(const QList<TMU::RecordData> &data);
 
 };
 

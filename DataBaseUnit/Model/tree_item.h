@@ -3,18 +3,11 @@
 
 #include <QString>
 #include <QVariant>
-
-typedef QMap<QString, QVariant> RecordData;
-typedef QMap<QString, QVariant> ElementInfo;
+#include <DataBaseUnit/Model/TMU_namespace.h>
 
 class TreeItem         // abstract class for specialy tree items
 {
 public:
-    const static int TITLE       = 0;
-    const static int ID          = 1;
-    const static int SURNAME     = 2;
-    const static int FIRST_NAME  = 3;
-    const static int SECOND_NAME = 4;
 
 private:
     QList<TreeItem*> childItems;
@@ -24,7 +17,7 @@ protected:
     QString title;
 
 public:
-    TreeItem(const RecordData &data, TreeItem *parent = 0);
+    TreeItem(const TMU::RecordData &data, TreeItem *parent = 0);
     virtual ~TreeItem();
     void appendChild(TreeItem *child);
     TreeItem *child(int row);
@@ -33,8 +26,8 @@ public:
     TreeItem *parent();
     virtual int columnCount() const = 0;
     virtual QVariant data(const int param) = 0;
-    virtual ElementInfo getInfo() = 0;
-    virtual void setInfo(const ElementInfo &info) = 0;
+    virtual TMU::ItemData getInfo() = 0;
+    virtual bool setInfo(const TMU::ItemData &info) = 0;
 };
 
 #endif // TREE_ITEM_H

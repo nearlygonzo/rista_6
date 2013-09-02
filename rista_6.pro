@@ -10,8 +10,11 @@ QT       += testlib
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-INCLUDEPATH += d:/boost/include/boost-1_54/
-LIBS += -Ld:/boost/lib -llibboost_system-mgw48-mt-1_54 -llibboost_thread-mgw48-mt-d-1_54
+#INCLUDEPATH += d:/boost/include/boost-1_54/
+#LIBS += -Ld:/boost/lib -llibboost_system-mgw48-mt-1_54 -llibboost_thread-mgw48-mt-d-1_54
+
+INCLUDEPATH += f:/boost/boost_1_54_0/
+LIBS += -Lf:/boost/boost_1_54_0/stage/lib -llibboost_system-mgw48-mt-1_54 -llibboost_thread-mgw48-mt-d-1_54
 
 TARGET = rista_6
 TEMPLATE = app
@@ -29,8 +32,8 @@ SOURCES += main.cpp\
     DataBaseUnit/Model/tree_item_root.cpp \
     DataBaseUnit/data_control.cpp \
     tests/TestsDataBase/test_data_control.cpp \
-    DataBaseUnit/Delegate/Widget/frame_patient.cpp \
-    DataBaseUnit/Delegate/delegate_frame_patient.cpp
+    DataBaseUnit/Delegate/delegate_frame_patient.cpp \
+    DataBaseUnit/Delegate/Widget/WidgetPatient.cpp
 
 HEADERS  += \
     DataBaseUnit/database.h \
@@ -44,10 +47,11 @@ HEADERS  += \
     DataBaseUnit/Model/tree_item_root.h \
     DataBaseUnit/data_control.h \
     tests/TestsDataBase/test_data_control.h \
-    DataBaseUnit/Delegate/Widget/frame_patient.h \
-    DataBaseUnit/Delegate/delegate_frame_patient.h
+    DataBaseUnit/Delegate/delegate_frame_patient.h \
+    DataBaseUnit/Model/TMU_namespace.h \
+    DataBaseUnit/Delegate/Widget/WidgetPatient.h
 
 FORMS    += mainwindow.ui \
-    DataBaseUnit/Delegate/Widget/frame_patient.ui
+    DataBaseUnit/Delegate/Widget/WidgetPatient.ui
 
 OTHER_FILES +=

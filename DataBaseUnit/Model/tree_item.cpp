@@ -1,6 +1,6 @@
 #include "tree_item.h"
 
-TreeItem::TreeItem(const RecordData &data, TreeItem *parent)
+TreeItem::TreeItem(const TMU::RecordData &data, TreeItem *parent)
     : id(data["id"].toInt())
 {
     parentItem = parent;

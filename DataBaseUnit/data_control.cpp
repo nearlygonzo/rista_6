@@ -15,7 +15,7 @@ void DataControl::fillTreeModels() {
          it != vectorModels.end(); ++it)
     {
         _db->setTable(it->second);
-        QList<RecordData> recordsList;
+        QList<TMU::RecordData> recordsList;
         for (int j = 0; j < _db->getRecordsCount(); ++j) {
             recordsList << convertToRecordData(_db->getRecord(j));
         }
@@ -23,8 +23,8 @@ void DataControl::fillTreeModels() {
     }
 }
 
-RecordData DataControl::convertToRecordData(const QSqlRecord& record) {
-    RecordData recordData;
+TMU::RecordData DataControl::convertToRecordData(const QSqlRecord& record) {
+    TMU::RecordData recordData;
     int count = record.count();
     for (int i = 0; i < count; ++i) {
         recordData[record.fieldName(i)] = QVariant(record.value(i));

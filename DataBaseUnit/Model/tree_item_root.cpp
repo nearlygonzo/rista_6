@@ -1,6 +1,6 @@
 #include "tree_item_root.h"
 
-TreeItemRoot::TreeItemRoot(const RecordData &data)
+TreeItemRoot::TreeItemRoot(const TMU::RecordData &data)
     : TreeItem(data, 0)
 {
     title = QString();
@@ -16,12 +16,13 @@ QVariant TreeItemRoot::data(const int param)
     return QVariant(0);
 }
 
-ElementInfo TreeItemRoot::getInfo()
+TMU::ItemData TreeItemRoot::getInfo()
 {
-    ElementInfo info;
+    TMU::ItemData info;
     return info;
 }
 
-void TreeItemRoot::setInfo(const ElementInfo &info)
+bool TreeItemRoot::setInfo(const TMU::ItemData &info)
 {
+    return true;
 }

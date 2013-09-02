@@ -12,7 +12,7 @@ private:
     const boost::shared_ptr<TreeModel> _treeModelPatients;
     const boost::shared_ptr<Database> _db;
     void fillTreeModels();
-    RecordData convertToRecordData(const QSqlRecord& record);
+    TMU::RecordData convertToRecordData(const QSqlRecord& record);
 
 public:
     DataControl();

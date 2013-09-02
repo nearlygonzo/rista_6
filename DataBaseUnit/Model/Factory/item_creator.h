@@ -11,7 +11,7 @@ private:
 public:
     static const int TYPE_ITEM_ROOT     = 0;
     static const int TYPE_ITEM_PATIENT  = 1;
-    TreeItem* factoryMethod(RecordData &data, TreeItem *parent = 0);
+    TreeItem *factoryMethod(TMU::RecordData &data, TreeItem *parent = 0);
     ItemCreator();
 };
 

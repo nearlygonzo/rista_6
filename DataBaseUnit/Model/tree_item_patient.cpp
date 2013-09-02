@@ -1,6 +1,6 @@
 #include "tree_item_patient.h"
 
-TreeItemPatient::TreeItemPatient(const RecordData &data, TreeItem *parent)
+TreeItemPatient::TreeItemPatient(const TMU::RecordData &data, TreeItem *parent)
     : TreeItem(data, parent),
       surname(data["surname"].toString()),
       first_name(data["first_name"].toString()),
@@ -17,12 +17,12 @@ int TreeItemPatient::columnCount() const
 QVariant TreeItemPatient::data(const int param)
 {
     switch (param) {
-    case TreeItem::TITLE:       return QVariant(title);
-    case TreeItem::ID:          return QVariant(id);
-    case TreeItem::SURNAME:     return QVariant(surname);
-    case TreeItem::FIRST_NAME:  return QVariant(first_name);
-    case TreeItem::SECOND_NAME: return QVariant(second_name);
-    default:    return QVariant();
+    case TMU::TITLE:       return QVariant(title);
+    case TMU::ID:          return QVariant(id);
+    case TMU::SURNAME:     return QVariant(surname);
+    case TMU::FIRST_NAME:  return QVariant(first_name);
+    case TMU::SECOND_NAME: return QVariant(second_name);
+    default: return QVariant();
     }
 }
 
@@ -31,20 +31,21 @@ QString TreeItemPatient::formTitle()
     return QString(surname + " " + first_name);
 }
 
-ElementInfo TreeItemPatient::getInfo()
+TMU::ItemData TreeItemPatient::getInfo()
 {
-    ElementInfo info;
-    info["surname"] = surname;
-    info["first_name"] = first_name;
-    info["second_name"] = second_name;
+    TMU::ItemData info;
+    info[TMU::SURNAME] = surname;
+    info[TMU::FIRST_NAME] = first_name;
+    info[TMU::SECOND_NAME] = second_name;
     return info;
 }
 
-void TreeItemPatient::setInfo(const ElementInfo &info)
+bool TreeItemPatient::setInfo(const TMU::ItemData &info)
 {
-    surname = info["surname"].toString();
-    first_name = info["first_name"].toString();
-    second_name = info["second_name"].toString();
+    surname = info[TMU::SURNAME].toString();
+    first_name = info[TMU::FIRST_NAME].toString();
+    second_name = info[TMU::SECOND_NAME].toString();
+    return true;
 }
 
 

@@ -4,7 +4,7 @@ ItemCreator::ItemCreator()
 {
 }
 
-TreeItem* ItemCreator::factoryMethod(RecordData &data, TreeItem *parent) {
+TreeItem* ItemCreator::factoryMethod(TMU::RecordData &data, TreeItem *parent) {
     int type = data["type"].toInt();
     switch (type) {
     case TYPE_ITEM_ROOT:    return new TreeItemRoot(data);

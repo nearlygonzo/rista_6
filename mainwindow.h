@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "core.h"
+#include <DataBaseUnit/Delegate/delegate_frame_patient.h>
 
 namespace Ui {
 class MainWindow;
@@ -16,6 +17,8 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     
+private slots:
+
 private:
     Ui::MainWindow *ui;
 };

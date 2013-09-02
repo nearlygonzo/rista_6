@@ -3,7 +3,7 @@
 TreeModel::TreeModel(QObject *parent)
      : QAbstractItemModel(parent)
 {
-    RecordData rootData;
+    TMU::RecordData rootData;
     rootData["id"] = 0;
     rootData["type"] = ItemCreator::TYPE_ITEM_ROOT;
     creator = boost::shared_ptr<ItemCreator>(new ItemCreator);
@@ -36,13 +36,20 @@ QVariant TreeModel::data(const QModelIndex &index, int role) const
     return item->data(index.column());
 }
 
-Qt::ItemFlags TreeModel::flags(const QModelIndex &index) const
+TMU::ItemData TreeModel::itemData(const QModelIndex &index) const
+{
+    TreeItem *item = static_cast<TreeItem*>(index.internalPointer());
+    TMU::ItemData data = item->getInfo();
+    return data;
+}
+
+/*Qt::ItemFlags TreeModel::flags(const QModelIndex &index) const
 {
     if (!index.isValid())
         return 0;
 
     return Qt::ItemIsEnabled | Qt::ItemIsSelectable;
-}
+}*/
 
 QModelIndex TreeModel::index(int row, int column, const QModelIndex &parent)
          const
@@ -92,11 +99,18 @@ int TreeModel::rowCount(const QModelIndex &parent) const
     return parentItem->childCount();
 }
 
-void TreeModel::fillModel(const QList<RecordData> &data)
+bool TreeModel::setItemData(const QModelIndex &index,
+                            const QMap<int, QVariant> &roles)
+{
+    TreeItem *item = static_cast<TreeItem*>(index.internalPointer());
+    return item->setInfo(roles);
+}
+
+void TreeModel::fillModel(const QList<TMU::RecordData> &data)
 {
     int count = data.size();
     for (int i = 0; i < count; ++i) {
-        RecordData recordData = data.value(i);
+        TMU::RecordData recordData = data.value(i);
         TreeItem *parent = findItem(recordData["parent_item"].toInt(), rootItem);
         TreeItem *item = creator->factoryMethod(recordData, parent);
         TreeItem *parentItem = item->parent();
@@ -107,7 +121,7 @@ void TreeModel::fillModel(const QList<RecordData> &data)
 TreeItem* TreeModel::findItem(const int id, TreeItem* parent)
 {
     TreeItem* item = parent;
-    if (item->data(TreeItem::ID).toInt() == id)
+    if (item->data(TMU::ID).toInt() == id)
         return item;
     for (int i = 0; i < parent->childCount(); ++i) {
         item = parent->child(i);
@@ -116,22 +130,10 @@ TreeItem* TreeModel::findItem(const int id, TreeItem* parent)
             if (item != childItem)
                 return childItem;
         }
-        else if (item->data(TreeItem::ID).toInt() == id)
+        else if (item->data(TMU::ID).toInt() == id)
             return item;
     }
     return item;
 }
 
-ElementInfo TreeModel::getElementInfo(QModelIndex &index)
-{
-    TreeItem *item = static_cast<TreeItem*>(index.internalPointer());
-    ElementInfo info = item->getInfo();
-    return info;
-}
-
-void TreeModel::setElementInfo(QModelIndex &index, const ElementInfo &info)
-{
-    TreeItem *item = static_cast<TreeItem*>(index.internalPointer());
-    item->setInfo(info);
-}
 

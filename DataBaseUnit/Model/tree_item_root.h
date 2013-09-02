@@ -9,11 +9,11 @@ private:
     static const int PROPERTES_COUNT = 1;
 
 public:
-    TreeItemRoot(const RecordData &data);
+    TreeItemRoot(const TMU::RecordData &data);
     int columnCount() const;
     QVariant data(const int param);
-    ElementInfo getInfo();
-    void setInfo(const ElementInfo &info);
+    TMU::ItemData getInfo();
+    bool setInfo(const TMU::ItemData &info);
 };
 
 #endif // TREE_ITEM_ROOT_H
