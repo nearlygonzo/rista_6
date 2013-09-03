@@ -27,3 +27,11 @@ void WidgetPatient::getData(TMU::ItemData &data)
     data[TMU::FIRST_NAME] = ui->lineEditFirstName->text();
     data[TMU::SECOND_NAME] = ui->lineEditSecondName->text();
 }
+
+ bool WidgetPatient::operator !=(WidgetPatient *widget)
+ {
+     if (indexSource != widget->indexSource)
+         return true;
+     else
+         return false;
+ }

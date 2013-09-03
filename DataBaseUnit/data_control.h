@@ -12,6 +12,7 @@ class DataControl : public QObject
 private:
     const boost::shared_ptr<TreeModel> tmPatients;
     const boost::shared_ptr<Database> db;
+    boost::shared_ptr<WidgetPatient> widgetPatient;
     void fillModelPatient();
     TMU::RecordData convertToRecordData(const QSqlRecord& record);
 

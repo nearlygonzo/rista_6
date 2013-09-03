@@ -119,7 +119,7 @@
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="widgetContent" native="true">
+   <widget class="QFrame" name="frameContent">
     <property name="geometry">
      <rect>
       <x>320</x>
@@ -127,6 +127,18 @@
       <width>671</width>
       <height>501</height>
      </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="lineWidth">
+     <number>2</number>
     </property>
    </widget>
   </widget>
@@ -136,7 +148,7 @@
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="fileMenu">

@@ -22,7 +22,6 @@ const Ui::MainWindow *MainWindow::getUi()
 
 void MainWindow::treeItemDoubleClick(QModelIndex index)
 {
-// TODO: validate index
-    emit changeWidgetContent(index, ui->widgetContent);
+    emit changeWidgetContent(index, ui->frameContent);
 }
 

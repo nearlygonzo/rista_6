@@ -34,5 +34,19 @@ void DataControl::setModelForView(QTreeView *view)
 
 void DataControl::showWidgetPatient(QModelIndex index, QWidget *parent)
 {
-    WidgetPatient *widget = new WidgetPatient(index, parent);
+    WidgetPatient *newWidget = new WidgetPatient(index, parent);
+    if (!widgetPatient.get()) {
+        widgetPatient = boost::shared_ptr<WidgetPatient>(newWidget);
+    } else {
+        if (widgetPatient.get() != newWidget)
+            widgetPatient = boost::shared_ptr<WidgetPatient>(newWidget);
+    }
+
+    TMU::ItemData data = index.model()->itemData(index);
+    widgetPatient->setData(data);
+    widgetPatient->show();
 }
+
+
+
+

@@ -18,7 +18,7 @@ public:
     ~WidgetPatient();
     void setData(TMU::ItemData &data);
     void getData(TMU::ItemData &data);
-
+    bool operator !=(WidgetPatient *widget);
 private:
     Ui::WidgetPatient *ui;
     QModelIndex indexSource;
