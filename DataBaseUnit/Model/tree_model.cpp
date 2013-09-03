@@ -33,7 +33,19 @@ QVariant TreeModel::data(const QModelIndex &index, int role) const
 
     TreeItem *item = static_cast<TreeItem*>(index.internalPointer());
 
-    return item->data(index.column());
+    return item->getData(index.column());
+}
+
+bool TreeModel::setData(const QModelIndex &index, const QVariant &value, int role)
+{
+    if (!index.isValid())
+        return false;
+
+    if (role != Qt::EditRole)
+        return false;
+
+    TreeItem *item = static_cast<TreeItem*>(index.internalPointer());
+    item->setData(index.column(), value);
 }
 
 TMU::ItemData TreeModel::itemData(const QModelIndex &index) const
@@ -41,6 +53,13 @@ TMU::ItemData TreeModel::itemData(const QModelIndex &index) const
     TreeItem *item = static_cast<TreeItem*>(index.internalPointer());
     TMU::ItemData data = item->getInfo();
     return data;
+}
+
+bool TreeModel::setItemData(const QModelIndex &index,
+                            const QMap<int, QVariant> &roles)
+{
+    TreeItem *item = static_cast<TreeItem*>(index.internalPointer());
+    return item->setInfo(roles);
 }
 
 Qt::ItemFlags TreeModel::flags(const QModelIndex &index) const
@@ -99,13 +118,6 @@ int TreeModel::rowCount(const QModelIndex &parent) const
     return parentItem->childCount();
 }
 
-bool TreeModel::setItemData(const QModelIndex &index,
-                            const QMap<int, QVariant> &roles)
-{
-    TreeItem *item = static_cast<TreeItem*>(index.internalPointer());
-    return item->setInfo(roles);
-}
-
 void TreeModel::fillModel(const QList<TMU::RecordData> &data)
 {
     int count = data.size();
@@ -121,7 +133,7 @@ void TreeModel::fillModel(const QList<TMU::RecordData> &data)
 TreeItem* TreeModel::findItem(const int id, TreeItem* parent)
 {
     TreeItem* item = parent;
-    if (item->data(TMU::ID).toInt() == id)
+    if (item->getData(TMU::ID).toInt() == id)
         return item;
     for (int i = 0; i < parent->childCount(); ++i) {
         item = parent->child(i);
@@ -130,7 +142,7 @@ TreeItem* TreeModel::findItem(const int id, TreeItem* parent)
             if (item != childItem)
                 return childItem;
         }
-        else if (item->data(TMU::ID).toInt() == id)
+        else if (item->getData(TMU::ID).toInt() == id)
             return item;
     }
     return item;

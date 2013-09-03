@@ -6,7 +6,6 @@ TreeItemPatient::TreeItemPatient(const TMU::RecordData &data, TreeItem *parent)
       first_name(data["first_name"].toString()),
       second_name(data["second_name"].toString())
 {
-    title = formTitle();
 }
 
 int TreeItemPatient::columnCount() const
@@ -14,21 +13,34 @@ int TreeItemPatient::columnCount() const
     return PROPERTES_COUNT;
 }
 
-QVariant TreeItemPatient::data(const int param)
+QString TreeItemPatient::title()
+{
+    return QString(surname + " " + first_name);
+}
+
+QVariant TreeItemPatient::getData(const int param)
 {
     switch (param) {
-    case TMU::TITLE:       return QVariant(title);
+    case TMU::TITLE:       return title();
     case TMU::ID:          return QVariant(id);
     case TMU::SURNAME:     return QVariant(surname);
     case TMU::FIRST_NAME:  return QVariant(first_name);
     case TMU::SECOND_NAME: return QVariant(second_name);
-    default: return QVariant();
+    default:               return QVariant();
     }
 }
 
-QString TreeItemPatient::formTitle()
+bool TreeItemPatient::setData(const int param, const QVariant &value)
 {
-    return QString(surname + " " + first_name);
+    switch (param) {
+    case TMU::SURNAME:      surname = value.toString();
+                            return true;
+    case TMU::FIRST_NAME:   first_name = value.toString();
+                            return true;
+    case TMU::SECOND_NAME:  second_name = value.toString();
+                            return true;
+    default:                return false;
+    }
 }
 
 TMU::ItemData TreeItemPatient::getInfo()
@@ -42,10 +54,15 @@ TMU::ItemData TreeItemPatient::getInfo()
 
 bool TreeItemPatient::setInfo(const TMU::ItemData &info)
 {
-    surname = info[TMU::SURNAME].toString();
-    first_name = info[TMU::FIRST_NAME].toString();
-    second_name = info[TMU::SECOND_NAME].toString();
-    return true;
+    try
+    {
+        surname = info[TMU::SURNAME].toString();
+        first_name = info[TMU::FIRST_NAME].toString();
+        second_name = info[TMU::SECOND_NAME].toString();
+        return true;
+    } catch (QException) {
+        return false;
+    }
 }
 
 

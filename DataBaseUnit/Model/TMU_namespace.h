@@ -9,7 +9,6 @@ namespace TMU {
     const static int SURNAME     = 2;
     const static int FIRST_NAME  = 3;
     const static int SECOND_NAME = 4;
-    const static int PATIENT_INFO = SURNAME + FIRST_NAME + SECOND_NAME;
     typedef QMap<int, QVariant> ItemData;
     typedef QMap<QString, QVariant> RecordData;
 }

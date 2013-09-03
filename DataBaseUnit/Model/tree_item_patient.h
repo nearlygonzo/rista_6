@@ -14,8 +14,9 @@ private:
 public:
     TreeItemPatient(const TMU::RecordData &data, TreeItem *parent = 0);
     int columnCount() const;
-    QVariant data(const int param);
-    inline QString formTitle();
+    inline QString title();
+    QVariant getData(const int param);
+    bool setData(const int param, const QVariant &value);
     TMU::ItemData getInfo();
     bool setInfo(const TMU::ItemData &info);
 };

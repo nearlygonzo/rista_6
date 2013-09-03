@@ -61,7 +61,7 @@
     <property name="lineWidth">
      <number>120</number>
     </property>
-    <widget class="QTreeView" name="patientsCatalogTreeView">
+    <widget class="QTreeView" name="treeViewPatients">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -83,7 +83,7 @@
       <enum>QFrame::StyledPanel</enum>
      </property>
      <property name="editTriggers">
-      <set>QAbstractItemView::DoubleClicked</set>
+      <set>QAbstractItemView::NoEditTriggers</set>
      </property>
      <property name="animated">
       <bool>true</bool>
@@ -95,7 +95,7 @@
       <bool>false</bool>
      </attribute>
     </widget>
-    <widget class="QTreeView" name="generalCatalogTreeView_2">
+    <widget class="QTreeView" name="treeViewOther">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -119,11 +119,11 @@
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="widgetActions" native="true">
+   <widget class="QWidget" name="widgetContent" native="true">
     <property name="geometry">
      <rect>
       <x>320</x>
-      <y>20</y>
+      <y>40</y>
       <width>671</width>
       <height>501</height>
      </rect>
@@ -136,7 +136,7 @@
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="fileMenu">

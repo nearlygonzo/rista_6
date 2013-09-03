@@ -3,7 +3,6 @@
 TreeItemRoot::TreeItemRoot(const TMU::RecordData &data)
     : TreeItem(data, 0)
 {
-    title = QString();
 }
 
 int TreeItemRoot::columnCount() const
@@ -11,9 +10,19 @@ int TreeItemRoot::columnCount() const
     return PROPERTES_COUNT;
 }
 
-QVariant TreeItemRoot::data(const int param)
+QString TreeItemRoot::title()
+{
+    return QString("root");
+}
+
+QVariant TreeItemRoot::getData(const int )
 {
     return QVariant(0);
+}
+
+bool TreeItemRoot::setData(const int , const QVariant &)
+{
+    return false;
 }
 
 TMU::ItemData TreeItemRoot::getInfo()
@@ -22,7 +31,8 @@ TMU::ItemData TreeItemRoot::getInfo()
     return info;
 }
 
-bool TreeItemRoot::setInfo(const TMU::ItemData &info)
+bool TreeItemRoot::setInfo(const TMU::ItemData &)
 {
     return true;
 }
+

@@ -1,18 +1,28 @@
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    Core::get_mutable_instance().fillTreeView(ui->patientsCatalogTreeView);
-    ui->patientsCatalogTreeView->setSelectionMode(QAbstractItemView::ExtendedSelection);
-    //DelegateFramePatient *del = (this);
-    ui->patientsCatalogTreeView->setItemDelegate(new DelegateFramePatient);
+    QObject::connect(ui->treeViewPatients, SIGNAL(doubleClicked(QModelIndex)),
+                     this, SLOT(treeItemDoubleClick(QModelIndex)));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+const Ui::MainWindow *MainWindow::getUi()
+{
+    return const_cast<Ui::MainWindow*>(ui);
+}
+
+
+void MainWindow::treeItemDoubleClick(QModelIndex index)
+{
+// TODO: validate index
+    emit changeWidgetContent(index, ui->widgetContent);
+}
+

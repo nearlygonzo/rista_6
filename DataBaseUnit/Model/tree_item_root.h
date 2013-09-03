@@ -11,7 +11,9 @@ private:
 public:
     TreeItemRoot(const TMU::RecordData &data);
     int columnCount() const;
-    QVariant data(const int param);
+    QString title();
+    QVariant getData(const int param);
+    bool setData(const int param, const QVariant &value);
     TMU::ItemData getInfo();
     bool setInfo(const TMU::ItemData &info);
 };

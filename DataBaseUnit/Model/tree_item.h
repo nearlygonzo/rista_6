@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QVariant>
+#include <QException>
 #include <DataBaseUnit/Model/TMU_namespace.h>
 
 class TreeItem         // abstract class for specialy tree items
@@ -14,7 +15,6 @@ private:
     TreeItem *parentItem;
 protected:
     int id;
-    QString title;
 
 public:
     TreeItem(const TMU::RecordData &data, TreeItem *parent = 0);
@@ -25,7 +25,9 @@ public:
     int row() const;
     TreeItem *parent();
     virtual int columnCount() const = 0;
-    virtual QVariant data(const int param) = 0;
+    virtual QString title() = 0;
+    virtual QVariant getData(const int param) = 0;
+    virtual bool setData(const int param, const QVariant &value) = 0;
     virtual TMU::ItemData getInfo() = 0;
     virtual bool setInfo(const TMU::ItemData &info) = 0;
 };

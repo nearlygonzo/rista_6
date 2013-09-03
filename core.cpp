@@ -1,13 +1,15 @@
 #include "core.h"
 
 Core::Core()
-    : _dataControl(new DataControl())
+    : dataControl(new DataControl())
 {
 }
 
-void Core::fillTreeView(QTreeView* treeView) {
-    _dataControl->setView(treeView);
-    treeView->setHeaderHidden(true);
-    //treeView->setDragEnabled(true);
+void Core::initialMainWindow(MainWindow &window)
+{
+    dataControl->setModelForView(window.getUi()->treeViewPatients);
+    QObject::connect(&window, SIGNAL(changeWidgetContent(QModelIndex,QWidget*)),
+                     dataControl, SLOT(showWidgetPatient(QModelIndex,QWidget*)));
 }
+
 

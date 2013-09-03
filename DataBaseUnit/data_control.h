@@ -4,19 +4,27 @@
 #include <QTreeView>
 #include <DataBaseUnit/Model/tree_model.h>
 #include <DataBaseUnit/database.h>
+#include <DataBaseUnit/Widgets/WidgetPatient.h>
 
-class DataControl
+class DataControl : public QObject
 {
+    Q_OBJECT
 private:
-    typedef std::pair<boost::shared_ptr<TreeModel>, QString>  ModelPair;
-    const boost::shared_ptr<TreeModel> _treeModelPatients;
-    const boost::shared_ptr<Database> _db;
-    void fillTreeModels();
+    const boost::shared_ptr<TreeModel> tmPatients;
+    const boost::shared_ptr<Database> db;
+    void fillModelPatient();
     TMU::RecordData convertToRecordData(const QSqlRecord& record);
 
 public:
     DataControl();
-    void setView(QTreeView *view);
+    void setModelForView(QTreeView *view);
+
+public slots:
+    void showWidgetPatient(QModelIndex index, QWidget *parent);
+
+signals:
+    void changedContent(QWidget *widget);
+
 };
 
 #endif // DATA_CONTROL_H

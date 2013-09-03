@@ -7,7 +7,8 @@
 #include <boost/noncopyable.hpp>
 #include <DataBaseUnit/Exceptions/db_exceptions.h>
 
-#define DB_PATH "d:\\rista_6\\rista\\rista_6\\DataBaseUnit\\rista_data_base.db"
+//#define DB_PATH "d:\\rista_6\\rista\\rista_6\\DataBaseUnit\\rista_data_base.db"
+#define DB_PATH "f:\\Rista_6\\rista_6-master\\DataBaseUnit\\rista_data_base.db"
 
 class Database : public boost::noncopyable
 {

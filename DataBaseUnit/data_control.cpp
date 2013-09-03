@@ -1,27 +1,21 @@
 #include "data_control.h"
 
 DataControl::DataControl()
-    : _treeModelPatients(new TreeModel()),
-      _db(new Database())
+    : tmPatients(new TreeModel()),
+      db(new Database())
 {
-    fillTreeModels();
+    fillModelPatient();
 }
 
-void DataControl::fillTreeModels() {
-    QList<ModelPair> vectorModels;
-    vectorModels << std::make_pair(_treeModelPatients, "patients");
-
-    for (QList<ModelPair>::iterator it = vectorModels.begin();
-         it != vectorModels.end(); ++it)
-    {
-        _db->setTable(it->second);
-        QList<TMU::RecordData> recordsList;
-        for (int j = 0; j < _db->getRecordsCount(); ++j) {
-            recordsList << convertToRecordData(_db->getRecord(j));
-        }
-        it->first->fillModel(recordsList);
+void DataControl::fillModelPatient() {
+    db->setTable("patients");
+    QList<TMU::RecordData> recordsData;
+    for (int i = 0; i < db->getRecordsCount(); ++i) {
+        recordsData << convertToRecordData(db->getRecord(i));
     }
+    tmPatients->fillModel(recordsData);
 }
+
 
 TMU::RecordData DataControl::convertToRecordData(const QSqlRecord& record) {
     TMU::RecordData recordData;
@@ -32,7 +26,13 @@ TMU::RecordData DataControl::convertToRecordData(const QSqlRecord& record) {
     return recordData;
 }
 
-void DataControl::setView(QTreeView *view)
+void DataControl::setModelForView(QTreeView *view)
 {
-    view->setModel(_treeModelPatients.get());
+    if (view->objectName() == "treeViewPatients")
+        view->setModel(tmPatients.get());
+}
+
+void DataControl::showWidgetPatient(QModelIndex index, QWidget *parent)
+{
+    WidgetPatient *widget = new WidgetPatient(index, parent);
 }
