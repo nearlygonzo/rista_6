@@ -1,13 +1,16 @@
 #include "TreeModel.h"
 
-TreeModel::TreeModel(QObject *parent)
-     : QAbstractItemModel(parent)
+TreeModel::TreeModel(QString name, Database *database, QObject *parent)
+     : QAbstractItemModel(parent),
+       tableName(name),
+       db(database),
+       creator(new ItemCreator)
 {
-    TMU::RecordData rootData;
+    DataUnit::RecordData rootData;
     rootData["id"] = 0;
     rootData["type"] = ItemCreator::TYPE_ITEM_ROOT;
-    creator = boost::shared_ptr<ItemCreator>(new ItemCreator);
     rootItem = creator->factoryMethod(rootData);
+    fillModel();
 }
 
 TreeModel::~TreeModel()
@@ -48,10 +51,10 @@ bool TreeModel::setData(const QModelIndex &index, const QVariant &value, int rol
     item->setData(index.column(), value);
 }
 
-TMU::ItemData TreeModel::itemData(const QModelIndex &index) const
+DataUnit::ItemData TreeModel::itemData(const QModelIndex &index) const
 {
     TreeItem *item = static_cast<TreeItem*>(index.internalPointer());
-    TMU::ItemData data = item->getInfo();
+    DataUnit::ItemData data = item->getInfo();
     return data;
 }
 
@@ -118,22 +121,15 @@ int TreeModel::rowCount(const QModelIndex &parent) const
     return parentItem->childCount();
 }
 
-void TreeModel::fillModel(const QList<TMU::RecordData> &data)
-{
-    int count = data.size();
-    for (int i = 0; i < count; ++i) {
-        TMU::RecordData recordData = data.value(i);
-        TreeItem *parent = findItem(recordData["parent_id"].toInt(), rootItem);
-        TreeItem *item = creator->factoryMethod(recordData, parent);
-        TreeItem *parentItem = item->parent();
-        parentItem->appendChild(item);
-    }
+void TreeModel::fillModel() {
+    db->setTable(tableName);
+
 }
 
 TreeItem* TreeModel::findItem(const int id, TreeItem* parent)
 {
     TreeItem* item = parent;
-    if (item->getData(TMU::ID).toInt() == id)
+    if (item->getData(DataUnit::ID).toInt() == id)
         return item;
     for (int i = 0; i < parent->childCount(); ++i) {
         item = parent->child(i);
@@ -142,7 +138,7 @@ TreeItem* TreeModel::findItem(const int id, TreeItem* parent)
             if (item != childItem)
                 return childItem;
         }
-        else if (item->getData(TMU::ID).toInt() == id)
+        else if (item->getData(DataUnit::ID).toInt() == id)
             return item;
     }
     return item;

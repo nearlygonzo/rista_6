@@ -9,7 +9,7 @@ private:
     static const int PROPERTES_COUNT = 1;
 
 public:
-    TreeItemRoot(const TMU::RecordData &data);
+    TreeItemRoot(const DataUnit::RecordData &data);
     int columnCount() const;
     QString title();
     QVariant getData(const int param);

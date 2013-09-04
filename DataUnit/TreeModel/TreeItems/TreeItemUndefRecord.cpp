@@ -1,6 +1,6 @@
 #include "TreeItemUndefRecord.h"
 
-TreeItemUndefRecord::TreeItemUndefRecord(const TMU::RecordData &data, TreeItem *parent)
+TreeItemUndefRecord::TreeItemUndefRecord(const DataUnit::RecordData &data, TreeItem *parent)
     : TreeItem(data, parent)
 {
 }

@@ -1,9 +1,9 @@
 #ifndef TREE_MODEL_UNIT_H
 #define TREE_MODEL_UNIT_H
 
-#include <QVariant>
+#include <QObject>
 
-namespace TMU {
+namespace DataUnit {
     const int ITEM_TYPE_ROOT         = 9;
     const int ITEM_TYPE_PATIENT_DIR  = 0;
     const int ITEM_TYPE_SIMPLE_DIR   = 1;

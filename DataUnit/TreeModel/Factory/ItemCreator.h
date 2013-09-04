@@ -3,7 +3,7 @@
 
 #include <DataUnit/TreeModel/TreeItems/TreeItemPatientDir.h>
 #include <DataUnit/TreeModel/TreeItems/TreeItemRoot.h>
-#include <DataUnit/TreeModel/TreeItems/TreeItemSimpleDir.h>
+#include <DataUnit/TreeModel/TreeItems/TreeItemFolder.h>
 #include <DataUnit/TreeModel/TreeItems/TreeItemDefRecord.h>
 #include <DataUnit/TreeModel/TreeItems/TreeItemUndefRecord.h>
 
@@ -12,7 +12,7 @@ class ItemCreator
 private:
 
 public:
-    TreeItem *factoryMethod(TMU::RecordData &data, TreeItem *parent = 0);
+    TreeItem *factoryMethod(DataUnit::RecordData &data, TreeItem *parent = 0);
     ItemCreator();
 };
 

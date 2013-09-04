@@ -1,6 +1,6 @@
 #include "TreeItemRoot.h"
 
-TreeItemRoot::TreeItemRoot(const TMU::RecordData &data)
+TreeItemRoot::TreeItemRoot(const DataUnit::RecordData &data)
     : TreeItem(data, 0)
 {
 }

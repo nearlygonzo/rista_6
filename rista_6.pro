@@ -43,7 +43,6 @@ SOURCES += main.cpp\
     DataUnit/Widgets/WidgetPatient.cpp \
     DataUnit/TreeModel/TreeModel.cpp \
     DataUnit/TreeModel/TreeItems/TreeItemUndefRecord.cpp \
-    DataUnit/TreeModel/TreeItems/TreeItemSimpleDir.cpp \
     DataUnit/TreeModel/TreeItems/TreeItemRoot.cpp \
     DataUnit/TreeModel/TreeItems/TreeItemPatientDir.cpp \
     DataUnit/TreeModel/TreeItems/TreeItemDefRecord.cpp \
@@ -51,10 +50,14 @@ SOURCES += main.cpp\
     DataUnit/TreeModel/Factory/ItemCreator.cpp \
     DataUnit/ListModel/Record.cpp \
     DataUnit/ListModel/Patient.cpp \
-    DataUnit/ListModel/ListModel.cpp \
     DataUnit/Database/Database.cpp \
     DataUnit/Exceptions/DBExceptions.cpp \
-    Core.cpp
+    Core.cpp \
+    DataUnit/TreeModel/TreeItems/TreeItemFolder.cpp \
+    DataUnit/ListModel/Folder.cpp \
+    DataUnit/Record.cpp \
+    DataUnit/Patient.cpp \
+    DataUnit/Folder.cpp
 
 HEADERS  += \
     mainwindow.h \
@@ -80,7 +83,6 @@ HEADERS  += \
     DataUnit/Widgets/WidgetPatient.h \
     DataUnit/TreeModel/TreeModel.h \
     DataUnit/TreeModel/TreeItems/TreeItemUndefRecord.h \
-    DataUnit/TreeModel/TreeItems/TreeItemSimpleDir.h \
     DataUnit/TreeModel/TreeItems/TreeItemRoot.h \
     DataUnit/TreeModel/TreeItems/TreeItemPatientDir.h \
     DataUnit/TreeModel/TreeItems/TreeItemDefRecord.h \
@@ -88,11 +90,15 @@ HEADERS  += \
     DataUnit/TreeModel/Factory/ItemCreator.h \
     DataUnit/ListModel/Record.h \
     DataUnit/ListModel/Patient.h \
-    DataUnit/ListModel/ListModel.h \
     DataUnit/Database/Database.h \
     DataUnit/DataUnitNamespace.h \
     DataUnit/Exceptions/DBExceptions.h \
-    Core.h
+    Core.h \
+    DataUnit/TreeModel/TreeItems/TreeItemFolder.h \
+    DataUnit/ListModel/Folder.h \
+    DataUnit/Record.h \
+    DataUnit/Patient.h \
+    DataUnit/Folder.h
 
 FORMS    += mainwindow.ui \
     DataBaseUnit/Widgets/WidgetPatient.ui \

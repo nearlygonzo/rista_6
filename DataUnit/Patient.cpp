@@ -1,6 +1,6 @@
 #include "Patient.h"
 
-Patient::Patient(const TMU::RecordData &data)
+Patient::Patient(const DataUnit::RecordData &data)
     : id(data["id"].toInt()),
       surname(data["surname"].toString()),
       firstName(data["first_name"].toString()),
