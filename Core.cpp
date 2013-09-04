@@ -1,4 +1,4 @@
-#include "core.h"
+#include "Core.h"
 
 Core::Core()
     : dataControl(new DataControl())

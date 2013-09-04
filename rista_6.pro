@@ -22,7 +22,6 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
     mainwindow.cpp \
-    core.cpp \
     DataBaseUnit/Exceptions/db_exceptions.cpp \
     tests/TestsDataBase/test_data_control.cpp \
     DataBaseUnit/Widgets/WidgetPatient.cpp \
@@ -54,11 +53,11 @@ SOURCES += main.cpp\
     DataUnit/ListModel/Patient.cpp \
     DataUnit/ListModel/ListModel.cpp \
     DataUnit/Database/Database.cpp \
-    DataUnit/Exceptions/DBExceptions.cpp
+    DataUnit/Exceptions/DBExceptions.cpp \
+    Core.cpp
 
 HEADERS  += \
     mainwindow.h \
-    core.h \
     DataBaseUnit/Exceptions/db_exceptions.h \
     tests/TestsDataBase/test_data_control.h \
     DataBaseUnit/Model/TMU_namespace.h \
@@ -92,7 +91,8 @@ HEADERS  += \
     DataUnit/ListModel/ListModel.h \
     DataUnit/Database/Database.h \
     DataUnit/DataUnitNamespace.h \
-    DataUnit/Exceptions/DBExceptions.h
+    DataUnit/Exceptions/DBExceptions.h \
+    Core.h
 
 FORMS    += mainwindow.ui \
     DataBaseUnit/Widgets/WidgetPatient.ui \
