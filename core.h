@@ -3,7 +3,7 @@
 
 #include "mainwindow.h"
 #include <boost/serialization/singleton.hpp>
-#include <DataBaseUnit/data_control.h>
+#include <DataUnit/DataControl.h>
 
 class Core : public boost::serialization::singleton<Core>
 {
