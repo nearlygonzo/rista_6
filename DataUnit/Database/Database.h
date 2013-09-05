@@ -9,7 +9,7 @@
 
 #define TABLE_PATIENTS       "patients"
 #define TABLE_RECORDS        "records"
-#define TABLE_FOLDERS        "simple_directories"
+#define TABLE_FOLDERS        "folders"
 #define TABLE_MAIN_CATALOG   "main_catalog"
 #define TABLE_IMPORT_CATALOG "import_catalog"
 #define TABLE_TEMP_CATALOG   "temp_catalog"

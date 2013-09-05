@@ -2,7 +2,7 @@
 #define TREE_ITEM_PATIENT_H
 
 #include <DataUnit/TreeModel/TreeItems/TreeItem.h>
-#include <DataUnit/ListModel/Patient.h>
+#include <DataUnit/Patient.h>
 
 class TreeItemPatientDir : public TreeItem
 {

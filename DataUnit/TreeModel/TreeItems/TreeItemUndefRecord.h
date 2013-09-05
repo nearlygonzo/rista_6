@@ -2,7 +2,7 @@
 #define TREEITEMUNDEFRECORD_H
 
 #include <DataUnit/TreeModel/TreeItems/TreeItem.h>
-#include <DataUnit/ListModel/Record.h>
+#include <DataUnit/Record.h>
 
 class TreeItemUndefRecord : public TreeItem
 {
