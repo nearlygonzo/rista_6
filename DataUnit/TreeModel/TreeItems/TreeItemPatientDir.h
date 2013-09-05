@@ -11,7 +11,7 @@ private:
     Patient *const patient;
 
 public:
-    TreeItemPatientDir(const TMU::RecordData &data, TreeItem *parent = 0);
+    TreeItemPatientDir(const DataUnit::RecordData &data, TreeItem *parent = 0);
     int columnCount() const;
     inline QString title();
     QVariant getData(const int param);

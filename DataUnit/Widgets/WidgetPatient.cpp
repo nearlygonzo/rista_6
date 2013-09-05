@@ -14,18 +14,18 @@ WidgetPatient::~WidgetPatient()
     delete ui;
 }
 
-void WidgetPatient::setData(TMU::ItemData &data)
+void WidgetPatient::setData(DataUnit::ItemData &data)
 {
-    ui->lineEditSurname->setText(data[TMU::SURNAME].toString());
-    ui->lineEditFirstName->setText(data[TMU::FIRST_NAME].toString());
-    ui->lineEditSecondName->setText(data[TMU::SECOND_NAME].toString());
+    ui->lineEditSurname->setText(data[DataUnit::SURNAME].toString());
+    ui->lineEditFirstName->setText(data[DataUnit::FIRST_NAME].toString());
+    ui->lineEditSecondName->setText(data[DataUnit::SECOND_NAME].toString());
 }
 
-void WidgetPatient::getData(TMU::ItemData &data)
+void WidgetPatient::getData(DataUnit::ItemData &data)
 {
-    data[TMU::SURNAME] = ui->lineEditSurname->text();
-    data[TMU::FIRST_NAME] = ui->lineEditFirstName->text();
-    data[TMU::SECOND_NAME] = ui->lineEditSecondName->text();
+    data[DataUnit::SURNAME] = ui->lineEditSurname->text();
+    data[DataUnit::FIRST_NAME] = ui->lineEditFirstName->text();
+    data[DataUnit::SECOND_NAME] = ui->lineEditSecondName->text();
 }
 
  bool WidgetPatient::operator !=(WidgetPatient *widget)

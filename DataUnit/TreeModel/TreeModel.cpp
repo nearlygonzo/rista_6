@@ -1,16 +1,13 @@
 #include "TreeModel.h"
 
-TreeModel::TreeModel(QString name, Database *database, QObject *parent)
+TreeModel::TreeModel(QObject *parent)
      : QAbstractItemModel(parent),
-       tableName(name),
-       db(database),
        creator(new ItemCreator)
 {
     DataUnit::RecordData rootData;
     rootData["id"] = 0;
     rootData["type"] = ItemCreator::TYPE_ITEM_ROOT;
     rootItem = creator->factoryMethod(rootData);
-    fillModel();
 }
 
 TreeModel::~TreeModel()
@@ -121,10 +118,11 @@ int TreeModel::rowCount(const QModelIndex &parent) const
     return parentItem->childCount();
 }
 
-void TreeModel::fillModel() {
-    db->setTable(tableName);
-
+void TreeModel::addElement(const DataUnit::RecordData &data) {
+    TreeItem *parent = findItem(data["id"].toInt(), rootItem);
+    parent->appendChild(creator->factoryMethod(data, parent));
 }
+
 
 TreeItem* TreeModel::findItem(const int id, TreeItem* parent)
 {

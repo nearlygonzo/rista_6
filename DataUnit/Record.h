@@ -3,7 +3,7 @@
 
 #include <DataUnit/DataUnitNamespace.h>
 
-typedef QList<Record>  ListRecords;
+typedef QMap<int, Record>  MapRecords;
 
 class Record
 {

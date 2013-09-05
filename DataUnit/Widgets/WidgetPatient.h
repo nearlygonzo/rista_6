@@ -16,8 +16,8 @@ class WidgetPatient : public QWidget
 public:
     explicit WidgetPatient(QModelIndex &index, QWidget *parent = 0);
     ~WidgetPatient();
-    void setData(TMU::ItemData &data);
-    void getData(TMU::ItemData &data);
+    void setData(DataUnit::ItemData &data);
+    void getData(DataUnit::ItemData &data);
     bool operator !=(WidgetPatient *widget);
 private:
     Ui::WidgetPatient *ui;

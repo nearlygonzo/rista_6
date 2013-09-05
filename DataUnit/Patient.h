@@ -1,10 +1,9 @@
 #ifndef PATIENT_H
 #define PATIENT_H
 
-#include <QObject>
 #include <DataUnit/DataUnitNamespace.h>
 
-typedef QList<Patient> ListPatients;
+typedef QMap<int, Patient> MapPatients;
 
 class Patient
 {
@@ -18,7 +17,7 @@ private:
     QString generalInfo;
 
 public:
-    explicit Patient(const TMU::RecordData &data);
+    explicit Patient(const DataUnit::RecordData &data);
 
     int getId();
     QString getSurname();

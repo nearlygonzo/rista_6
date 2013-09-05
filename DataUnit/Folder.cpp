@@ -6,5 +6,16 @@ Folder::Folder(const DataUnit::RecordData &data)
 {
 }
 
+int Folder::getId() {
+    return id;
+}
 
+QString Folder::getName() {
+    return name;
+}
+
+bool Folder::setName(QString val) {
+    name = val;
+    return true;
+}
 

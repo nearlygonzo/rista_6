@@ -3,7 +3,7 @@
 
 #include <DataUnit/DataUnitNamespace.h>
 
-typedef QList<Folder>  ListFolders;
+typedef QMap<int, Folder>  MapFolders;
 
 class Folder
 {

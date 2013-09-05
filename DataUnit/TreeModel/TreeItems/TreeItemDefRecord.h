@@ -12,7 +12,7 @@ private:
     Patient *const patient;
 
 public:
-    TreeItemDefRecord(const TMU::RecordData &data, TreeItem *parent = 0);
+    TreeItemDefRecord(const DataUnit::RecordData &data, TreeItem *parent = 0);
 };
 
 #endif // TREEITEMDEFRECORD_H

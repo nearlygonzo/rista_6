@@ -1,6 +1,6 @@
 #include "TreeItemPatientDir.h"
 
-TreeItemPatientDir::TreeItemPatientDir(const TMU::RecordData &data, TreeItem *parent)
+TreeItemPatientDir::TreeItemPatientDir(const DataUnit::RecordData &data, TreeItem *parent)
     : TreeItem(data, parent)
 {
 }
@@ -18,8 +18,8 @@ QString TreeItemPatientDir::title()
 QVariant TreeItemPatientDir::getData(const int param)
 {
     switch (param) {
-    case TMU::TITLE:       return title();
-    case TMU::ID:          return QVariant(id);
+    case DataUnit::TITLE:       return title();
+    case DataUnit::ID:          return QVariant(id);
     default:               return QVariant();
     }
 }

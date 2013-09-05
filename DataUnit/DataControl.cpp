@@ -2,10 +2,16 @@
 
 DataControl::DataControl()
     : db(new Database()),
-      tmCatalogMain(new TreeModel(db.get(), TABLE_MAIN_CATALOG)),
-      tmCatalogTemp(new TreeModel(db.get(), TABLE_TEMP_CATALOG)),
-      tmCatalogImport(new TreeModel(db.get(), TABLE_IMPORT_CATALOG))
+      tmCatalogMain(new TreeModel()),
+      tmCatalogTemp(new TreeModel()),
+      tmCatalogImport(new TreeModel()),
+      mapPatients(new MapPatients),
+      mapRecords(new MapRecords),
+      mapFolders(new MapFolders)
 {
+    fillMapPatients();
+    fillMapRecords();
+    fillMapFolders();
 }
 
 DataUnit::RecordData DataControl::convertToRecordData(const QSqlRecord& record) {
@@ -17,17 +23,53 @@ DataUnit::RecordData DataControl::convertToRecordData(const QSqlRecord& record) 
     return recordData;
 }
 
-void DataControl::fillModelMain() {
 
+void DataControl::fillMapPatients() {
+    db->setTable(TABLE_PATIENTS);
+    int count = db->getRecordsCount();
+    DataUnit::RecordData data;
+    for (int i = 0; i < count; ++i) {
+        data = convertToRecordData(db->getRecord(i));
+        mapPatients[data["id"].toInt()] = data;
+    }
+}
+
+void DataControl::fillMapRecords() {
+    db->setTable(TABLE_RECORDS);
+    int count = db->getRecordsCount();
+    DataUnit::RecordData data;
+    for (int i = 0; i < count; ++i) {
+        data = convertToRecordData(db->getRecord(i));
+        mapRecords[data["id"].toInt()] = data;
+    }
+}
+
+void DataControl::fillMapFolders() {
+    db->setTable(TABLE_FOLDERS);
+    int count = db->getRecordsCount();
+    DataUnit::RecordData data;
+    for (int i = 0; i < count; ++i) {
+        data = convertToRecordData(db->getRecord(i));
+        mapFolders[data["id"].toInt()] = data;
+    }
+}
+
+void DataControl::fillModelMain() {
+    db->setTable(TABLE_MAIN_CATALOG);
+    int count = db->getRecordsCount();
+    DataUnit::RecordData data;
+    for (int i = 0; i < count; ++i) {
+        data = convertToRecordData(db->getRecord(i));
+        tmCatalogMain->addElement(data);
+    }
 }
 
 void DataControl::fillModelTemp() {
-
 }
 
 void DataControl::fillModelImport() {
-
 }
+
 
 void DataControl::setModelForView(QTreeView *view)
 {

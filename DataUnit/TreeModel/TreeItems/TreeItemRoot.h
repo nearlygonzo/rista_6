@@ -1,7 +1,7 @@
 #ifndef TREE_ITEM_ROOT_H
 #define TREE_ITEM_ROOT_H
 
-#include <DataBaseUnit/Model/TreeItem.h>
+#include <DataUnit/TreeModel/TreeItems/TreeItem.h>
 
 class TreeItemRoot : public TreeItem
 {
@@ -9,7 +9,7 @@ private:
     static const int PROPERTES_COUNT = 1;
 
 public:
-    TreeItemRoot(const TMU::RecordData &data);
+    TreeItemRoot(const DataUnit::RecordData &data);
     int columnCount() const;
     QString title();
     QVariant getData(const int param);

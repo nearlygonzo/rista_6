@@ -17,7 +17,7 @@ protected:
     int id;
 
 public:
-    TreeItem(const TMU::RecordData &data, TreeItem *parent = 0);
+    TreeItem(const DataUnit::RecordData &data, TreeItem *parent = 0);
     virtual ~TreeItem();
     void appendChild(TreeItem *child);
     TreeItem *child(int row);

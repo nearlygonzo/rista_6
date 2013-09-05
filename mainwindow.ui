@@ -61,7 +61,7 @@
     <property name="lineWidth">
      <number>120</number>
     </property>
-    <widget class="QTreeView" name="treeViewPatients">
+    <widget class="QTreeView" name="treeViewMain">
      <property name="geometry">
       <rect>
        <x>10</x>

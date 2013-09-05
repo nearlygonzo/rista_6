@@ -5,14 +5,14 @@
 #include <QList>
 #include <boost/shared_ptr.hpp>
 #include <boost/noncopyable.hpp>
-#include <DataUnit/Exceptions/db_exceptions.h>
+#include <DataUnit/Exceptions/DBExceptions.h>
 
-#define TABLE_PATIENTS           "patients"
-#define TABLE_RECORDS            "records"
-#define TABLE_SIMPLE_DIRECTORIES "simple_directories"
-#define TABLE_MAIN_CATALOG       "main_catalog"
-#define TABLE_IMPORT_CATALOG     "import_catalog"
-#define TABLE_TEMP_CATALOG       "temp_catalog"
+#define TABLE_PATIENTS       "patients"
+#define TABLE_RECORDS        "records"
+#define TABLE_FOLDERS        "simple_directories"
+#define TABLE_MAIN_CATALOG   "main_catalog"
+#define TABLE_IMPORT_CATALOG "import_catalog"
+#define TABLE_TEMP_CATALOG   "temp_catalog"
 #define DB_PATH "d:\\rista_6\\rista\\rista_6\\DataUnit\\Database\\rista_data_base.db"
 //#define DB_PATH "f:\\Rista_6\\rista_6-master\\DataBaseUnit\\rista_data_base.db"
 

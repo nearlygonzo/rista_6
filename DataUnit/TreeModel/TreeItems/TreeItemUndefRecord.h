@@ -10,7 +10,7 @@ private:
     Record *const record;
 
 public:
-    TreeItemUndefRecord(const TMU::RecordData &data, TreeItem *parent = 0);
+    TreeItemUndefRecord(const DataUnit::RecordData &data, TreeItem *parent = 0);
 };
 
 #endif // TREEITEMUNDEFRECORD_H

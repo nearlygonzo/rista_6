@@ -14,14 +14,12 @@ class TreeModel : public QAbstractItemModel
 {
     Q_OBJECT
 private:
-    const QString tableName;
-    const boost::shared_ptr<Database> db;
     const boost::shared_ptr<ItemCreator> creator;
     TreeItem *rootItem;
     TreeItem *findItem(const int id, TreeItem *parent);
 
 public:
-    TreeModel(QString name, Database *database, QObject *parent = 0);
+    TreeModel(QObject *parent = 0);
     ~TreeModel();
 
     QVariant data(const QModelIndex &index, int role) const;
@@ -34,8 +32,7 @@ public:
     QModelIndex parent(const QModelIndex &index) const;
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     int columnCount(const QModelIndex &parent = QModelIndex()) const;
-
-    void fillModel();
+    void addElement(const DataUnit::RecordData &data);
 
 };
 
