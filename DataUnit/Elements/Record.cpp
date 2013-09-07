@@ -1,16 +1,12 @@
 #include "Record.h"
 
-Record::Record(const DataUnit::RecordData &data)
-    : id(data["id"].toInt()),
+Record::Record(const QSqlRecord &data)
+    : Element(data["id"].toInt()),
       name(data["name"].toString()),
       datetime(data["datetime"].toDateTime()),
       value(data["value"].toString()),
       note(data["note"].toString())
 {
-}
-
-int Record::getId() {
-    return id;
 }
 
 QString Record::getName() {
@@ -47,5 +43,11 @@ QString Record::getNote() {
 void Record::setNote(QString val) {
     note = val;
 }
+
+QString Record::formTitle() {
+    return name;
+}
+
+
 
 

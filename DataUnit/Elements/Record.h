@@ -1,22 +1,19 @@
 #ifndef RECORD_H
 #define RECORD_H
 
-#include <DataUnit/DataUnitNamespace.h>
+#include <DataUnit/Elements/Element.h>
 
-typedef QMap<int, Record>  MapRecords;
-
-class Record
+class Record : public Element
 {
 private:
-    int     id;
     QString name;
     QDateTime datetime;
     QString value;
     QString note;
 
 public:
-    Record(const DataUnit::RecordData &data);
-    int getId();
+    static const int PROPERTES_COUNT = 5;
+    explicit Record(const QSqlRecord &data);
     QString getName();
     bool setName(QString val);
     QDateTime getDatetime();
@@ -25,6 +22,7 @@ public:
     bool setValue(QString val);
     QString getNote();
     void setNote(QString val);
+    QString formTitle();
 
 };
 

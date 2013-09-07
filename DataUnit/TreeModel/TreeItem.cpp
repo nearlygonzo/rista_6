@@ -1,7 +1,9 @@
 #include "TreeItem.h"
 
-TreeItem::TreeItem(const DataUnit::RecordData &data, TreeItem *parent)
-    : id(data["id"].toInt())
+TreeItem::TreeItem(const int id, const int pos, Element &elem, TreeItem *parent)
+    : itemId(id),
+      element(elem),
+      position(pos)
 {
     parentItem = parent;
 }
@@ -38,4 +40,25 @@ TreeItem* TreeItem::parent()
 {
     return parentItem;
 }
+
+int TreeItem::columnCount() const {
+    return COLUMN_COUNT;
+}
+
+int TreeItem::getId() const {
+    return itemId;
+}
+
+QString TreeItem::getTitle() {
+    return title;
+}
+
+Element TreeItem::getElement() {
+    return element;
+}
+
+
+
+
+
 

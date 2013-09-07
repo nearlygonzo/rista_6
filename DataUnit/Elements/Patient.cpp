@@ -1,17 +1,13 @@
 #include "Patient.h"
 
-Patient::Patient(const DataUnit::RecordData &data)
-    : id(data["id"].toInt()),
-      surname(data["surname"].toString()),
-      firstName(data["first_name"].toString()),
-      secondName(data["second_name"].toString()),
-      sex(data["sex"].toChar()),
-      generalInfo(data["generalInfo"].toString())
+Patient::Patient(const QSqlRecord &data)
+    : Element(data.field("id")),
+      surname(data.field("surname")),
+      firstName(data.field("first_name")),
+      secondName(data.field("second_name")),
+      sex(data.field("sex")),
+      generalInfo(data.field("generalInfo"))
 {
-}
-
-int Patient::getId() {
-    return id;
 }
 
 QString Patient::getSurname() {
@@ -63,3 +59,9 @@ bool Patient::setGeneralInfo(QString val) {
     generalInfo = val;
     return true;
 }
+
+QString Patient::formTitle() {
+    return (surname + "  " + firstName);
+}
+
+

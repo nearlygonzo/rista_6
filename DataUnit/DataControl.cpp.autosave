@@ -11,21 +11,7 @@ DataControl::DataControl()
 }
 
 void DataControl::readDatabase() {
-    QList<QString> &tablesName;
-    tablesName << TABLE_MAIN_CATALOG << TABLE_TEMP_CATALOG << TABLE_IMPORT_CATALOG
-               << TABLE_PATIENTS << TABLE_RECORDS << TABLE_FOLDERS;
-    for (QList<QString>::iterator it = tablesName.begin();
-         it != tablesName.end(); ++it)
-    {
-        QString tableName = *it;
-        db->setTable(tableName);
-        QList<QSqlRecord> tableData;
-        int count = db->getRecordsCount();
-        for (int i = 0; i < count; ++i) {
-            tableData.append(db->getRecord(i));
-        }
-        tables[tableName] = tableData;
-    }
+
 }
 
 

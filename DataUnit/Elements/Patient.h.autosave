@@ -1,15 +1,11 @@
 #ifndef PATIENT_H
 #define PATIENT_H
 
-#include <DataUnit/DataUnitNamespace.h>
+#include <DataUnit/Elements/Element.h>
 
-typedef QMap<int, Patient> MapPatients;
-
-class Patient
+class Patient : public Element
 {
 private:
-    static const int PROPERTES_COUNT = 6;
-    int     id;
     QString surname;
     QString firstName;
     QString secondName;
@@ -17,9 +13,9 @@ private:
     QString generalInfo;
 
 public:
-    explicit Patient(const DataUnit::RecordData &data);
+    static const int PROPERTES_COUNT = 6;
+    explicit Patient(const QSqlRecord &data);
 
-    int getId();
     QString getSurname();
     bool setSurname(QString val);
     QString getFirstName();
@@ -30,6 +26,7 @@ public:
     bool setSex(char val);
     QString getGeneralInfo();
     bool setGeneralInfo(QString val);
+    QString formTitle();
 
 };
 

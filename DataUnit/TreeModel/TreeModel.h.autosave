@@ -28,7 +28,7 @@ public:
     QModelIndex parent(const QModelIndex &index) const;
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     int columnCount(const QModelIndex &parent = QModelIndex()) const;
-    void addElement(const int id, const int parentId, Element &elem);
+    void addElement(const int id, const int pos, const int parentId, Element &elem);
 
 };
 

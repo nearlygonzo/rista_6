@@ -1,13 +1,9 @@
 #include "TreeModel.h"
 
 TreeModel::TreeModel(QObject *parent)
-     : QAbstractItemModel(parent),
-       creator(new ItemCreator)
+     : QAbstractItemModel(parent)
 {
-    DataUnit::RecordData rootData;
-    rootData["id"] = 0;
-    rootData["type"] = ItemCreator::TYPE_ITEM_ROOT;
-    rootItem = creator->factoryMethod(rootData);
+    rootItem = new TreeItem(0, 0);
 }
 
 TreeModel::~TreeModel()
@@ -32,34 +28,14 @@ QVariant TreeModel::data(const QModelIndex &index, int role) const
         return QVariant();
 
     TreeItem *item = static_cast<TreeItem*>(index.internalPointer());
-
-    return item->getData(index.column());
-}
-
-bool TreeModel::setData(const QModelIndex &index, const QVariant &value, int role)
-{
-    if (!index.isValid())
-        return false;
-
-    if (role != Qt::EditRole)
-        return false;
-
-    TreeItem *item = static_cast<TreeItem*>(index.internalPointer());
-    item->setData(index.column(), value);
-}
-
-DataUnit::ItemData TreeModel::itemData(const QModelIndex &index) const
-{
-    TreeItem *item = static_cast<TreeItem*>(index.internalPointer());
-    DataUnit::ItemData data = item->getInfo();
-    return data;
-}
-
-bool TreeModel::setItemData(const QModelIndex &index,
-                            const QMap<int, QVariant> &roles)
-{
-    TreeItem *item = static_cast<TreeItem*>(index.internalPointer());
-    return item->setInfo(roles);
+    switch (index.column()) {
+    case DataUnit::TITLE:
+        return QVariant(item->getTitle());
+    case DataUnit::ID:
+        return QVariant(item->getId());
+    case DataUnit::ELEMENT_OBJ:
+        return QVariant(item->getElement());
+    }
 }
 
 Qt::ItemFlags TreeModel::flags(const QModelIndex &index) const
@@ -118,16 +94,17 @@ int TreeModel::rowCount(const QModelIndex &parent) const
     return parentItem->childCount();
 }
 
-void TreeModel::addElement(const DataUnit::RecordData &data) {
-    TreeItem *parent = findItem(data["id"].toInt(), rootItem);
-    parent->appendChild(creator->factoryMethod(data, parent));
+void TreeModel::addElement(const int id, const int pos,
+                           const int parentId, Element &elem) {
+    TreeItem *parent = findItem(parentId, rootItem);
+    parent->appendChild(new TreeItem(id, pos, elem, parent));
 }
 
 
 TreeItem* TreeModel::findItem(const int id, TreeItem* parent)
 {
     TreeItem* item = parent;
-    if (item->getData(DataUnit::ID).toInt() == id)
+    if (item->getId() == id)
         return item;
     for (int i = 0; i < parent->childCount(); ++i) {
         item = parent->child(i);
@@ -136,7 +113,7 @@ TreeItem* TreeModel::findItem(const int id, TreeItem* parent)
             if (item != childItem)
                 return childItem;
         }
-        else if (item->getData(DataUnit::ID).toInt() == id)
+        else if (item->getId() == id)
             return item;
     }
     return item;
