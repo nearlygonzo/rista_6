@@ -10,7 +10,7 @@ private:
 
 public:
     static const int PROPERTIES_COUNT = 2;
-    explicit Folder(const QSqlRecord &data);
+    explicit Folder(DataUnit::RecordData &data);
     QString getName();
     bool setName(QString val);
     QString formTitle();

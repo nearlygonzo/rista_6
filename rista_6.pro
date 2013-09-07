@@ -25,14 +25,9 @@ SOURCES += main.cpp\
     DataUnit/DataControl.cpp \
     DataUnit/Widgets/WidgetPatient.cpp \
     DataUnit/TreeModel/TreeModel.cpp \
-    DataUnit/TreeModel/TreeItems/TreeItem.cpp \
     DataUnit/Database/Database.cpp \
     DataUnit/Exceptions/DBExceptions.cpp \
     Core.cpp \
-    DataUnit/ListModel/Folder.cpp \
-    DataUnit/Record.cpp \
-    DataUnit/Patient.cpp \
-    DataUnit/Folder.cpp \
     DataUnit/Elements/Element.cpp \
     DataUnit/Elements/Record.cpp \
     DataUnit/Elements/Patient.cpp \
@@ -49,9 +44,6 @@ HEADERS  += \
     DataUnit/DataUnitNamespace.h \
     DataUnit/Exceptions/DBExceptions.h \
     Core.h \
-    DataUnit/ListModel/Folder.h \
-    DataUnit/Record.h \
-    DataUnit/Patient.h \
     DataUnit/Elements/Element.h \
     DataUnit/Elements/Record.h \
     DataUnit/Elements/Patient.h \

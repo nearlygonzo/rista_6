@@ -1,26 +1,39 @@
 #include "Database.h"
 
-Database::Database(const QString db_path)
+Database::Database(const QString dbPath)
 {
     QSqlDatabase sdb = QSqlDatabase::addDatabase("QSQLITE");
-    sdb.setDatabaseName(db_path);
-    this->setTable();
+    sdb.setDatabaseName(dbPath);
+    query = boost::shared_ptr<QSqlQueryModel>(new QSqlQueryModel());
 }  
 
-void Database::setTable(const QString table_name) {
-    QSqlDatabase sdb = QSqlDatabase::database();
-    if (!sdb.isOpen())
-        sdb.open();
-    query = boost::shared_ptr<QSqlQueryModel>(new QSqlQueryModel());
-    query->setQuery("SELECT * FROM " + table_name);
+void Database::setTable(const QString tableName) {
+    QSqlDatabase::database();
+    query->setQuery("SELECT * FROM " + tableName);
 }
 
-QSqlRecord Database::getRecord(const quint32 index) {
-    return query->record(index);
-}
-
-int Database::getRecordsCount() const {
+int Database::recordsCount() const {
     return query->rowCount();
 }
+
+DataUnit::RecordData &Database::getRecord(const int index) {
+    return convertToRecordData(query->record(index));
+}
+
+DataUnit::RecordData &Database::getRecord(const int id, const QString tableName) {
+    query->setQuery("SELECT * FROM " + tableName + " WHERE id=" + id);
+    return convertToRecordData(query->record());
+}
+
+DataUnit::RecordData &Database::convertToRecordData(QSqlRecord record) {
+    DataUnit::RecordData recordData;
+    int count = record.count();
+    for (int i = 0; i < count; ++i) {
+        recordData[record.fieldName(i)] = record.value(i);
+    }
+    return recordData;
+}
+
+
 
 

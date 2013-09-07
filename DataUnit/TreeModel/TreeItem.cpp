@@ -1,6 +1,6 @@
 #include "TreeItem.h"
 
-TreeItem::TreeItem(const int id, const int pos, Element &elem, TreeItem *parent)
+TreeItem::TreeItem(const int id, const int pos, Element *elem, TreeItem *parent)
     : itemId(id),
       element(elem),
       position(pos)
@@ -53,7 +53,7 @@ QString TreeItem::getTitle() {
     return title;
 }
 
-Element TreeItem::getElement() {
+Element *TreeItem::getElement() {
     return element;
 }
 

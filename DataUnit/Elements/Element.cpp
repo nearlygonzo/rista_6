@@ -1,6 +1,7 @@
 #include "Element.h"
 
-Element::Element()
+Element::Element(const int id_)
+    : id(id_)
 {
 }
 

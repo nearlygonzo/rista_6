@@ -1,5 +1,5 @@
-#ifndef TREE_ITEM_H
-#define TREE_ITEM_H
+#ifndef TREEITEM_H
+#define TREEITEM_H
 
 #include <QString>
 #include <QVariant>
@@ -20,7 +20,7 @@ private:
     int position;
 
 public:
-    TreeItem(const int id, const int pos, Element &elem = 0, TreeItem *parent = 0);
+    TreeItem(const int id, const int pos, Element *elem = 0, TreeItem *parent = 0);
     ~TreeItem();
     void appendChild(TreeItem *child);
     TreeItem *child(int row);
@@ -30,5 +30,7 @@ public:
     int columnCount() const;
     int getId() const;
     QString getTitle();
-    Element getElement();
+    Element *getElement();
 };
+
+#endif

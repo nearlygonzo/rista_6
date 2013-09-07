@@ -7,17 +7,17 @@ class Record : public Element
 {
 private:
     QString name;
-    QDateTime datetime;
+    ///QDateTime datetime;
     QString value;
     QString note;
 
 public:
     static const int PROPERTES_COUNT = 5;
-    explicit Record(const QSqlRecord &data);
+    explicit Record(DataUnit::RecordData &data);
     QString getName();
     bool setName(QString val);
-    QDateTime getDatetime();
-    bool setDateTime(QDateTime val);
+    //QDateTime getDatetime();
+    //bool setDateTime(QDateTime val);
     QString getValue();
     bool setValue(QString val);
     QString getNote();

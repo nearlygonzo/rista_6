@@ -33,8 +33,8 @@ QVariant TreeModel::data(const QModelIndex &index, int role) const
         return QVariant(item->getTitle());
     case DataUnit::ID:
         return QVariant(item->getId());
-    case DataUnit::ELEMENT_OBJ:
-        return QVariant(item->getElement());
+    default:
+        return QVariant();
     }
 }
 
@@ -94,10 +94,10 @@ int TreeModel::rowCount(const QModelIndex &parent) const
     return parentItem->childCount();
 }
 
-void TreeModel::addElement(const int id, const int pos,
-                           const int parentId, Element &elem) {
-    TreeItem *parent = findItem(parentId, rootItem);
-    parent->appendChild(new TreeItem(id, pos, elem, parent));
+void TreeModel::addElement(DataUnit::RecordData &data, Element *elem) {
+    TreeItem *parent = findItem(data["parent_id"].toInt(), rootItem);
+    parent->appendChild(new TreeItem(data["id"].toInt(),
+                        data["position"].toInt(), elem, parent));
 }
 
 

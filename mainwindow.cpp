@@ -5,7 +5,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    QObject::connect(ui->treeViewPatients, SIGNAL(doubleClicked(QModelIndex)),
+    QObject::connect(ui->treeViewMain, SIGNAL(doubleClicked(QModelIndex)),
                      this, SLOT(treeItemDoubleClick(QModelIndex)));
 }
 

@@ -1,8 +1,8 @@
 #include "Folder.h"
 
-Folder::Folder(const QSqlRecord &data)
-    : Element(data.field("id")),
-      name(data.field("name"))
+Folder::Folder(DataUnit::RecordData &data)
+    : Element(data["id"].toInt()),
+      name(data["name"].toString())
 {
 }
 

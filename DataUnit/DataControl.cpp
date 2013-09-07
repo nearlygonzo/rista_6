@@ -1,75 +1,48 @@
 #include "DataControl.h"
 
 DataControl::DataControl()
-    : db(new Database()),
-      tmCatalogMain(new TreeModel()),
-      tmCatalogTemp(new TreeModel()),
-      tmCatalogImport(new TreeModel())
+    : db(new Database())
 {
-    readDatabase();
-    fillModel(TABLE_MAIN_CATALOG, tmCatalogMain.get());
 }
 
-void DataControl::readDatabase() {
-    QList<QString> &tablesName;
-    tablesName << TABLE_MAIN_CATALOG << TABLE_TEMP_CATALOG << TABLE_IMPORT_CATALOG
-               << TABLE_PATIENTS << TABLE_RECORDS << TABLE_FOLDERS;
-    for (QList<QString>::iterator it = tablesName.begin();
-         it != tablesName.end(); ++it)
-    {
-        QString tableName = *it;
-        db->setTable(tableName);
-        QList<QSqlRecord> tableData;
-        int count = db->getRecordsCount();
-        for (int i = 0; i < count; ++i) {
-            tableData.append(db->getRecord(i));
+TreeModel *DataControl::fillModel(const QString tableName) {
+    TreeModel *model = new TreeModel();
+    QList<DataUnit::RecordData> listRecords;
+    fillList(tableName, listRecords);
+
+    QList<DataUnit::RecordData>::iterator it = listRecords.begin();
+    for (; it != listRecords.end(); ++it) {
+        Element *element;
+        switch ((*it)["type"].toInt()) {
+        case DataUnit::PATIENT_OBJ:
+            element = new Patient(db->getRecord((*it)["pointer"].toInt(), TABLE_PATIENTS));
+            break;
+        case DataUnit::RECORD_OBJ:
+            element = new Record(db->getRecord((*it)["pointer"].toInt(), TABLE_RECORDS));
+            break;
+        case DataUnit::FOLDER_OBJ:
+            element = new Folder(db->getRecord((*it)["pointer"].toInt(), TABLE_FOLDERS));
+            break;
         }
-        tables[tableName] = tableData;
+        model->addElement((*it), element);
     }
+    return model;
 }
 
-
-void DataControl::fillModel(QString tableName, TreeModel *tm) {
+void DataControl::fillList(const QString tableName, QList<DataUnit::RecordData> &list) {
     db->setTable(tableName);
-
-    // read all record from table for model
-    QList<QSqlRecord> data;
-    int count = db->getRecordsCount();
-    for (int i = 0; i < count; ++i) {
-        data.append(db->getRecord(i));
-    }
-
-    // after associate record data with elements
-    for (QList<QSqlRecord>::iterator it = data.begin(); it != data.end(); ++it) {
-        int elemId = static_cast<int>(it->field("pointer"));
-        int elemType = static_cast<int>(it->field("type"));
-        Element &elem = findElement(elemType, elemId);
-        int itemId = static_cast<int>(it->field("id"));
-        int itemPos = static_cast<int>(it->field("position"));
-        int parentId = static_cast<int>(it->field("parent_id"));
-        tm->addElement(itemId, pos, parentId, elem);
-    }
+    int count = db->recordsCount();
+    for (int i = 0; i < count; ++i)
+        list.append(db->getRecord(i));
 }
 
-
-
-DataUnit::RecordData DataControl::convertToRecordData(const QSqlRecord& record) {
-    DataUnit::RecordData recordData;
-    int count = record.count();
-    for (int i = 0; i < count; ++i) {
-        recordData[record.fieldName(i)] = QVariant(record.value(i));
-    }
-    return recordData;
-}
-
-void DataControl::setModelForView(QTreeView *view)
-{
+void DataControl::setModelForView(QTreeView *view) {
     if (view->objectName() == "treeViewMain")
-        view->setModel(tmCatalogMain.get());
+        view->setModel(fillModel(TABLE_MAIN_CATALOG));
     else if (view->objectName() == "treeViewTemp")
-        view->setModel(tmCatalogTemp.get());
+        view->setModel(fillModel(TABLE_TEMP_CATALOG));
     else if (view->objectName() == "treeViewImport")
-        view->setModel(tmCatalogImport.get());
+        view->setModel(fillModel(TABLE_IMPORT_CATALOG));
 }
 
 void DataControl::showWidgetPatient(QModelIndex index, QWidget *parent)
@@ -82,8 +55,8 @@ void DataControl::showWidgetPatient(QModelIndex index, QWidget *parent)
             widgetPatient = boost::shared_ptr<WidgetPatient>(newWidget);
     }
 
-    DataUnit::ItemData data = index.model()->itemData(index);
-    widgetPatient->setData(data);
+    //DataUnit::ItemData data = index.model()->itemData(index);
+    //widgetPatient->setData(data);
     widgetPatient->show();
 }
 

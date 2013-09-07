@@ -4,8 +4,7 @@ FactoryElements::FactoryElements()
 {
 }
 
-Element *FactoryElements::factoryMethod(int type, int id) {
-    DataUnit::RecordData &data;
+Element *FactoryElements::factoryMethod(int type, DataUnit::RecordData &data) {
     switch (type) {
     case DataUnit::PATIENT_OBJ:
         return new Patient(data);

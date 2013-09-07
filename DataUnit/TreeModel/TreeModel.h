@@ -1,5 +1,5 @@
-#ifndef TREE_MODEL_H
-#define TREE_MODEL_H
+#ifndef TREEMODEL_H
+#define TREEMODEL_H
 
 #include <QAbstractItemModel>
 #include <QModelIndex>
@@ -13,7 +13,6 @@ class TreeModel : public QAbstractItemModel
 {
     Q_OBJECT
 private:
-    const boost::shared_ptr<ItemCreator> creator;
     TreeItem *rootItem;
     TreeItem *findItem(const int id, TreeItem *parent);
 
@@ -28,7 +27,7 @@ public:
     QModelIndex parent(const QModelIndex &index) const;
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     int columnCount(const QModelIndex &parent = QModelIndex()) const;
-    void addElement(const int id, const int parentId, Element &elem);
+    void addElement(DataUnit::RecordData &data, Element *elem);
 
 };
 

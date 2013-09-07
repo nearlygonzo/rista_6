@@ -7,8 +7,6 @@
 #include <DataUnit/Widgets/WidgetPatient.h>
 #include <DataUnit/Elements/FactoryElements.h>
 
-typedef QMap<QString, QList<QSqlRecord> > MapTablesData;
-
 class DataControl : public QObject
 {
     Q_OBJECT
@@ -16,17 +14,10 @@ public:
 
 private:
     const boost::shared_ptr<Database> db;
-    const boost::shared_ptr<TreeModel> tmCatalogMain;
-    const boost::shared_ptr<TreeModel> tmCatalogTemp;
-    const boost::shared_ptr<TreeModel> tmCatalogImport;
     boost::shared_ptr<FactoryElements> factory;
-    boost::shared_ptr<MapTablesData> tables;
     boost::shared_ptr<WidgetPatient> widgetPatient;
-
-    void readDatabase();
-    Element &findElement(int type, int id);
-    DataUnit::RecordData convertToRecordData(const QSqlRecord& record);
-    void fillModel(QString tableName, TreeModel *tm);
+    TreeModel *fillModel(const QString tableName);
+    void fillList(const QString tableName, QList<DataUnit::RecordData> &list);
 
 public:
     DataControl();

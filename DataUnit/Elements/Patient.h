@@ -14,7 +14,7 @@ private:
 
 public:
     static const int PROPERTES_COUNT = 6;
-    explicit Patient(const DataUnit::RecordData &data);
+    explicit Patient(DataUnit::RecordData &data);
 
     QString getSurname();
     bool setSurname(QString val);
@@ -26,6 +26,7 @@ public:
     bool setSex(char val);
     QString getGeneralInfo();
     bool setGeneralInfo(QString val);
+    QString formTitle();
 
 };
 

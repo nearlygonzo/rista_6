@@ -17,6 +17,8 @@ namespace DataUnit {
     const int PATIENT_OBJ   = 0;
     const int FOLDER_OBJ    = 1;
     const int RECORD_OBJ    = 2;
+
+    typedef QMap<QString, QVariant> RecordData;
 }
 
 #endif // TREE_MODEL_UNIT_H
